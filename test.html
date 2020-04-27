@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>thorana test</title>
+</head>
+<body>
+	<canvas style="background: rgba(0,0,0,0.89);width: 100%;height: 100%" id="myCanvas">
+		Your browser not supported. please try with a different device.
+	</canvas>
+
+	<script>
+		var myCanvas;
+		var canvasWidth,canvasHeight;
+		var windowWidth,windowHeight;
+
+		window.onload = function(){
+
+			myCanvas = document.getElementById('myCanvas');
+			// console.log("Width : " + myCanvas.width + " height : "+ myCanvas.height);
+
+			console.log(myCanvas);
+
+			myCanvas.addEventListener('resize',function(){
+				console.log("canvas width : " + myCanvas.width + " canvas height : "+ myCanvas.height);
+			});
+			
+			myCanvas.addEventListener('onload',function(){
+				console.log("canvas width : " + myCanvas.width + " canvas height : "+ myCanvas.height);
+			});
+
+
+		}
+
+		window.addEventListener('resize',function(){
+
+			// console.log("Width : " + window.innerWidth + " height : "+ window.innerHeight);			
+		});
+
+	</script>
+</body>
+</html>

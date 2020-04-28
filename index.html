@@ -49,25 +49,27 @@
 				cy[i+1] = cy[0] + (R + r) * Math.cos(i*(Math.PI/4));
 			}
 
-			
+
 
 			// get context of the canvas
 			context = myCanvas.getContext("2d");
-				
-			context.beginPath();
-			context.strokeStyle = "rgba(255,255,255,1)";
-			context.arc(w/2,h/2,50,Math.PI*2,false);
-			// context.fillStyle = "rgba(0,0,255,0.9)";
-			context.stroke();
-			context.closePath();
+			
+			for(var i = 0; i <= 8 ; i++){
+				context.beginPath();
+				context.strokeStyle = "rgba(255,255,255,1)";
+				context.arc(cx[i],cy[i],50,Math.PI*2,false);
+				// context.fillStyle = "rgba(0,0,255,0.9)";
+				context.stroke();
+				context.closePath();
+			}
 
-			var image = new Image();
-			image.src = "images/e0027.png";
-			image.addEventListener('load',function(){
-				console.log("image loaded");
-				context.drawImage(image,0,0,100,100);
-				context.rotate(Math.PI/3);
-			});
+			// var image = new Image();
+			// image.src = "images/e0027.png";
+			// image.addEventListener('load',function(){
+			// 	console.log("image loaded");
+			// 	context.drawImage(image,0,0,100,100);
+			// 	context.rotate(Math.PI/3);
+			// });
 
 
 		}

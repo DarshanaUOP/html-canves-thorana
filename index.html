@@ -12,58 +12,34 @@
 	<script>
 		var myCanvas;
 		var canvasWidth,canvasHeight;
-		var windowWidth,windowHeight;
+		var ww,hw;
+		var wc,hc;
 		var context;
 
 		window.onload = function(){
+			ww = window.innerWidth;
+			hw = window.innerHeight;
 
 			myCanvas = document.getElementById('myCanvas');
-			myCanvas.width = window.innerWidth;
-			myCanvas.height = window.innerHeight;
-				// console.log("Width : " + myCanvas.width + " height : "+ myCanvas.height);
+			myCanvas.width = ww;
+			myCanvas.height = (ww/2);
+
+			wc = myCanvas.width;
+			hc = myCanvas.height;
+
+			console.log("wc : " + wc + " hc : " + hc);
+
 			context = myCanvas.getContext("2d");
-
-			console.log(myCanvas);
-
-
-			context.textBaseline = "top";
-			//Date
-			context.fillStyle = "#FFF";
-			context.font = "100px Sans-Serif";
-			context.fillText (new Date(), 10 ,10);
-			
+				
 			context.beginPath();
-			//context.strokeStyle = rgba(r,g,b,0.9);
-			context.arc(Math.round(window.width/100),50,50,Math.PI*2,false);
-			context.fillStyle = "rgba(r,g,b,0.9)";
-			context.fill();
-			
-
-			myCanvas.addEventListener('resize',function(){
-				console.log("canvas width : " + myCanvas.width + " canvas height : "+ myCanvas.height);
-			});
-			
-			myCanvas.addEventListener('onload',function(){
-				console.log("canvas width : " + myCanvas.width + " canvas height : "+ myCanvas.height);
-			});
-
-
-
+			context.strokeStyle = "rgba(0,0,255,1)";
+			context.arc(wc/2,hc/2,50,Math.PI*2,false);
+			context.fillStyle = "rgba(0,0,255,0.9)";
+			// context.fill();
+			context.stroke();
 
 		}
-
-		window.addEventListener('resize',function(){
-
-			console.log("Width : " + window.innerWidth + " height : "+ window.innerHeight + " - " + Math.round(window.innerWidth/100));	
-						context.beginPath();
-			//context.strokeStyle = rgba(r,g,b,0.9);
-			context.arc(Math.round(window.innerWidth/100)*5,50,50,Math.PI*2,false);
-			context.fillStyle = "rgba(r,g,b,0.9)";
-			context.fill();		
-		});
-
-
-
+		
 	</script>
 </body>
 </html>

@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 </head>
 <body>
-	<canvas style="background: rgba(0,0,0,1);width: 100%;height: 100%" id="myCanvas">
+	<canvas style="background: rgba(0,0,0,0.9);width: 100%;height: 100%" id="myCanvas">
 		Your browser not supported. please try with a different device.
 	</canvas>
 
@@ -19,6 +19,8 @@
 		var marginTop,marginBotom;
 		var cx = new Array();
 		var cy = new Array();
+		var pointSqx,pointSqy; // starting point of squre down
+		var dimPointSqx,dimPointSqy; // end point of squre down
 
 		window.onload = function(){
 			ww = window.innerWidth;
@@ -52,40 +54,70 @@
 				cy[i+1] = cy[0] + (R + r) * Math.cos(i*(Math.PI/4));
 			}
 
-
-
+			// calculate dimentions of down square
+			pointSqx = cx[0] - (R + 3*r);
+			pointSqy = (cy[0] + r) + ((R + r)/(Math.sqrt(2)));
+			dimPointSqx = 6*r + 2*R;
+			dimPointSqy = 0.98*h - pointSqy;
 			// get context of the canvas
 			context = myCanvas.getContext("2d");
 			
+			// draw square
+			context.beginPath();
+			context.strokeStyle = "rgba(255,255,255,1)";
+			context.fillStyle = "rgba(0,0,0,0.4)";
+			context.strokeRect(pointSqx,pointSqy,dimPointSqx,dimPointSqy);
+			context.fillRect(pointSqx,pointSqy,dimPointSqx,dimPointSqy);
+
+			context.fill();
+			context.closePath();
+
+
 			for(var i = 0; i <= cx.length ; i++){
 				//draw outer circle of each circles
 				context.beginPath();
 				context.strokeStyle = "rgba(255,255,255,1)";
+				context.fillStyle = "rgba(0,0,0,1)";
 				if (i == 0) {
 					context.arc(cx[i],cy[i],R,Math.PI*2,false);
 				}else{
 					context.arc(cx[i],cy[i],r,Math.PI*2,false);
 				}
-				context.fillStyle = "rgba(0,0,255,0.1)";
 				context.stroke();
 				context.fill();
 				context.closePath();
 			}
 
 			for(var i = 0; i <= cx.length ; i++){
-				//draw outer circle of each circles
+				//draw inner circle of each circles
 				context.beginPath();
 				context.strokeStyle = "rgba(255,255,255,1)";
+				context.fillStyle = "rgba(255,255,255,0.7)";
 				if (i == 0) {
-					context.arc(cx[i],cy[i],R * 0.8,Math.PI*2,false);
+					context.arc(cx[i],cy[i],R * 0.2,Math.PI*2,false);
 				}else{
-					context.arc(cx[i],cy[i],r* 0.8,Math.PI*2,false);
+					context.arc(cx[i],cy[i],r* 0.6,Math.PI*2,false);
 				}
-				context.fillStyle = "rgba(0,0,255,0.1)";
 				context.stroke();
 				context.fill();
 				context.closePath();
 			}
+
+			// context.beginPath();
+			// context.strokeStyle = "rgba(255,255,255,1)";
+			// context.fillStyle = "rgba(255,255,255,1)";
+			// context.arc(cx[0]+50,cy[0]+50,10,Math.PI*2,false);
+			// context.stroke();
+			// context.fill();
+			// context.closePath();
+			
+			// context.beginPath();
+			// context.strokeStyle = "rgba(255,255,255,1)";
+			// context.fillStyle = "rgba(255,255,255,1)";
+			// context.arc(cx[1]+50,cy[1]+50,2,Math.PI*2,false);
+			// context.stroke();
+			// context.fill();
+			// context.closePath();
 
 			// var image = new Image();
 			// image.src = "images/e0027.png";

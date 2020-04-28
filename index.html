@@ -57,7 +57,11 @@
 			for(var i = 0; i <= 8 ; i++){
 				context.beginPath();
 				context.strokeStyle = "rgba(255,255,255,1)";
-				context.arc(cx[i],cy[i],50,Math.PI*2,false);
+				if (i == 0) {
+					context.arc(cx[i],cy[i],R,Math.PI*2,false);
+				}else{
+					context.arc(cx[i],cy[i],r,Math.PI*2,false);
+				}
 				// context.fillStyle = "rgba(0,0,255,0.9)";
 				context.stroke();
 				context.closePath();

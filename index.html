@@ -15,7 +15,8 @@
 		var ww,hw;
 		var w,h;
 		var context;
-		var r,R; //radius of circles
+		var r,R,z; //radius of circles and z = sin(pi/8)
+		var marginTop,marginBotom;
 		var cx = new Array();
 		var cy = new Array();
 
@@ -25,19 +26,21 @@
 
 			myCanvas = document.getElementById('myCanvas');
 			myCanvas.width = ww;
-			myCanvas.height = ww/2; //5*(ww/9);
+			myCanvas.height = ww/2; 
 
-			//get canvas dimentions
 			w = myCanvas.width;
 			h = myCanvas.height;
 
-			//calculate r and R (radii)
-			r = (0.23 / (2 + Math.sqrt(2))) * w ;
-			R = Math.sqrt(2) * r;
+			//calculate r and R (radii) - *get canvas dimentions [leave margings from top and bottom and use rest for draw circles]
+			marginTop = 0.04;  // 4% of w
+			marginBotom = 0.1; // 10% of w
+			z = Math.sin(Math.PI/8);
+			r = ((1 - (marginTop + marginBotom)) / 4) * (z / (z + 1)) * w;
+			R = ((1 - z) / z) * r;
 
 			// calculate center possitions of each circles
-			cx[0] = w/2;
-			cy[0] = w/4;
+			cx[0] = w/2;	// centers of main circle
+			cy[0] = (h/2)*(1 + marginTop - marginBotom);
 
 			for (var i = 0; i <= 7; i++) {
 				// creating x coordinates of centers
@@ -55,6 +58,7 @@
 			context = myCanvas.getContext("2d");
 			
 			for(var i = 0; i <= cx.length ; i++){
+				//draw outer circle of each circles
 				context.beginPath();
 				context.strokeStyle = "rgba(255,255,255,1)";
 				if (i == 0) {
@@ -62,8 +66,24 @@
 				}else{
 					context.arc(cx[i],cy[i],r,Math.PI*2,false);
 				}
-				// context.fillStyle = "rgba(0,0,255,0.9)";
+				context.fillStyle = "rgba(0,0,255,0.1)";
 				context.stroke();
+				context.fill();
+				context.closePath();
+			}
+
+			for(var i = 0; i <= cx.length ; i++){
+				//draw outer circle of each circles
+				context.beginPath();
+				context.strokeStyle = "rgba(255,255,255,1)";
+				if (i == 0) {
+					context.arc(cx[i],cy[i],R * 0.8,Math.PI*2,false);
+				}else{
+					context.arc(cx[i],cy[i],r* 0.8,Math.PI*2,false);
+				}
+				context.fillStyle = "rgba(0,0,255,0.1)";
+				context.stroke();
+				context.fill();
 				context.closePath();
 			}
 

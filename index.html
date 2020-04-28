@@ -17,9 +17,26 @@
 		window.onload = function(){
 
 			myCanvas = document.getElementById('myCanvas');
-			// console.log("Width : " + myCanvas.width + " height : "+ myCanvas.height);
+			myCanvas.width = window.innerWidth;
+			myCanvas.height = window.innerHeight;
+				// console.log("Width : " + myCanvas.width + " height : "+ myCanvas.height);
+			var context = myCanvas.getContext("2d");
 
 			console.log(myCanvas);
+
+
+			context.textBaseline = "top";
+			//Date
+			context.fillStyle = "#FFF";
+			context.font = "100px Sans-Serif";
+			context.fillText (new Date(), 10 ,10);
+			
+			context.beginPath();
+			//context.strokeStyle = rgba(r,g,b,0.9);
+			context.arc(10,50,50,Math.PI*2,false);
+			context.fillStyle = "rgba(r,g,b,0.9)";
+			context.fill();
+			
 
 			myCanvas.addEventListener('resize',function(){
 				console.log("canvas width : " + myCanvas.width + " canvas height : "+ myCanvas.height);
@@ -30,12 +47,16 @@
 			});
 
 
+
+
 		}
 
 		window.addEventListener('resize',function(){
 
 			// console.log("Width : " + window.innerWidth + " height : "+ window.innerHeight);			
 		});
+
+
 
 	</script>
 </body>

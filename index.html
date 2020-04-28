@@ -15,6 +15,7 @@
 		var ww,hw;
 		var w,h;
 		var context;
+		var r,R; //radius of circles
 
 		window.onload = function(){
 			ww = window.innerWidth;
@@ -22,12 +23,16 @@
 
 			myCanvas = document.getElementById('myCanvas');
 			myCanvas.width = ww;
-			myCanvas.height = (ww/2);
+			myCanvas.height = ww/2; //5*(ww/9);
 
+			//get canvas dimentions
 			w = myCanvas.width;
 			h = myCanvas.height;
 
-			console.log("w : " + w + " h : " + h);
+			//calculate r and R (radii)
+			r = (0.23 / (2 + Math.sqrt(2))) * w ;
+			R = Math.sqrt(2) * r;
+
 
 			context = myCanvas.getContext("2d");
 				
@@ -45,9 +50,17 @@
 				context.drawImage(image,0,0,100,100);
 				context.rotate(Math.PI/3);
 			});
-			console.log(image);
+
 
 		}
+
+		function coordinates(w,h){
+			var w = this.w;
+			var h = this.h;
+
+
+		}
+
 
 	</script>
 </body>

@@ -13,7 +13,7 @@
 		var myCanvas;
 		var canvasWidth,canvasHeight;
 		var ww,hw;
-		var wc,hc;
+		var w,h;
 		var context;
 
 		window.onload = function(){
@@ -24,16 +24,16 @@
 			myCanvas.width = ww;
 			myCanvas.height = (ww/2);
 
-			wc = myCanvas.width;
-			hc = myCanvas.height;
+			w = myCanvas.width;
+			h = myCanvas.height;
 
-			console.log("wc : " + wc + " hc : " + hc);
+			console.log("w : " + w + " h : " + h);
 
 			context = myCanvas.getContext("2d");
 				
 			context.beginPath();
 			context.strokeStyle = "rgba(255,255,255,1)";
-			context.arc(wc/2,hc/2,50,Math.PI*2,false);
+			context.arc(w/2,h/2,50,Math.PI*2,false);
 			context.fillStyle = "rgba(0,0,255,0.9)";
 			context.stroke();
 			context.closePath();
@@ -42,7 +42,8 @@
 			image.src = "images/e0027.png";
 			image.addEventListener('load',function(){
 				console.log("image loaded");
-				context.drawImage(image,wc/2,hc/2,100,100);
+				context.drawImage(image,0,0,100,100);
+				context.rotate(Math.PI/3);
 			});
 			console.log(image);
 

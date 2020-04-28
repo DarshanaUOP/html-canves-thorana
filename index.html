@@ -21,6 +21,7 @@
 		var cy = new Array();
 		var pointSqx,pointSqy; // starting point of squre down
 		var dimPointSqx,dimPointSqy; // end point of squre down
+		var fractionOfDispSmall,fractionOfDispLarge //bulb display area as fraction of radius
 
 		window.onload = function(){
 			ww = window.innerWidth;
@@ -88,15 +89,17 @@
 				context.closePath();
 			}
 
+			fractionOfDispSmall = 0.6 ;
+			fractionOfDispLarge = 0.2 ;
 			for(var i = 0; i <= cx.length ; i++){
 				//draw inner circle of each circles
 				context.beginPath();
 				context.strokeStyle = "rgba(255,255,255,1)";
 				context.fillStyle = "rgba(255,255,255,0.7)";
 				if (i == 0) {
-					context.arc(cx[i],cy[i],R * 0.2,Math.PI*2,false);
+					context.arc(cx[i],cy[i],R * fractionOfDispLarge, Math.PI*2,false);
 				}else{
-					context.arc(cx[i],cy[i],r* 0.6,Math.PI*2,false);
+					context.arc(cx[i],cy[i],r* fractionOfDispSmall, Math.PI*2,false);
 				}
 				context.stroke();
 				context.fill();
@@ -119,13 +122,13 @@
 			// context.fill();
 			// context.closePath();
 
-			// var image = new Image();
-			// image.src = "images/e0027.png";
-			// image.addEventListener('load',function(){
-			// 	console.log("image loaded");
-			// 	context.drawImage(image,0,0,100,100);
-			// 	context.rotate(Math.PI/3);
-			// });
+			var image = new Image();
+			image.src = "images/e0499.png";
+			image.addEventListener('load',function(){
+				console.log("image loaded");
+				context.drawImage(image,cx[1] - fractionOfDispSmall*r/4,cy[1]-fractionOfDispSmall*r/4,2*fractionOfDispSmall*r,fractionOfDispSmall*r*2);
+				context.rotate(Math.PI/3);
+			});
 
 
 		}

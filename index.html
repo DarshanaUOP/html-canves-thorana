@@ -8,7 +8,7 @@
 	<canvas style="background: rgba(0,0,0,0.9);width: 100%;height: 100%" id="myCanvas">
 		Your browser not supported. please try with a different device.
 	</canvas>
-	<!-- <audio id="theAudio" src="images/ASEMATUWANA.MP3" controls></audio> -->
+	<audio id="theAudio" src="images/ASEMATUWANA.MP3" controls></audio>
 
 	<script>
 
@@ -168,19 +168,15 @@
 			// 	}
 			// }
 			
-			var intensity = 0.9 ;
+			
 			function draw(){
-				// small circles inner Bulb set
+				// small circles inner Bulb animations set
+				var intensity = 0.9 ;	
 				var dotSize = 0.003*w;
 				var dotsForSmallCircle = {
-					numberOfDots : [20,25,30],
+					numberOfDots : [12,24,36],
 					radii : [0.7,0.8,0.9]
 				};
-
-				// intensity = intensity + 0.01;
-				// if (intensity >0.9 ) {
-				// 	intensity = 0.1;
-				// }
 			
 				for (var k = 0; k < dotsForSmallCircle.radii.length; k++) {
 					// context.strokeStyle = "rgba(255,255,255,"+intensity+")";

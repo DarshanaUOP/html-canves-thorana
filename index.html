@@ -22,6 +22,9 @@
 		var pointSqx,pointSqy; // starting point of squre down
 		var dimPointSqx,dimPointSqy; // end point of squre down
 		var fractionOfDispSmall,fractionOfDispLarge //bulb display area as fraction of radius
+		var angleBC; 	//angle between box and botom circle center (c0)
+		var leftImgBoxStartX,leftImgBoxStartY,rightImgBoxStartX,rightImgBoxStartY; //starting coodinates of first image boxes
+		var leftImageBoxW,leftImageBoxH,rightImgBoxW,rightImgBoxH; // dimensions of image boxes	
 
 		window.onload = function(){
 			ww = window.innerWidth;
@@ -56,10 +59,11 @@
 			}
 
 			// calculate dimentions of down square
-			pointSqx = cx[0] - (R + 3*r);
+			pointSqx = cx[0] - (R + 3*r);		// starting point
 			pointSqy = (cy[0] + r) + ((R + r)/(Math.sqrt(2)));
-			dimPointSqx = 6*r + 2*R;
+			dimPointSqx = 6*r + 2*R;			// dimensions
 			dimPointSqy = 0.98*h - pointSqy;
+
 			// get context of the canvas
 			context = myCanvas.getContext("2d");
 			
@@ -69,9 +73,33 @@
 			context.fillStyle = "rgba(0,0,0,0.4)";
 			context.strokeRect(pointSqx,pointSqy,dimPointSqx,dimPointSqy);
 			context.fillRect(pointSqx,pointSqy,dimPointSqx,dimPointSqy);
-
 			context.fill();
 			context.closePath();
+
+			// create left image box
+			var d = (r - cy[1] + cy[8])/r;
+			angleBC = Math.acos(d);
+			leftImgBoxStartX = pointSqx;
+			leftImgBoxStartY = pointSqy;
+			leftImageBoxH = dimPointSqy;
+			leftImageBoxW = R +3*r - r*Math.sin(angleBC);
+
+			var imageBoxLeft = new Image();
+			imageBoxLeft.src = "images/data5.jpg";
+			imageBoxLeft.addEventListener('load',function(){
+				context.drawImage(imageBoxLeft,leftImgBoxStartX,leftImgBoxStartY,leftImageBoxW,leftImageBoxH);		
+			});
+
+			rightImgBoxStartX = cx[0] + r*Math.sin(angleBC);
+			rightImgBoxStartY = cy[1] + r*Math.cos(angleBC);
+			rightImgBoxH = leftImageBoxH;
+			rightImgBoxW = leftImageBoxW;
+
+			var imageBoxRight = new Image();
+			imageBoxRight.src = "images/data5.jpg";
+			imageBoxRight.addEventListener('load',function(){
+				context.drawImage(imageBoxRight,rightImgBoxStartX,rightImgBoxStartY,rightImgBoxW,rightImgBoxH);		
+			});
 
 
 			for(var i = 0; i <= cx.length ; i++){
@@ -125,7 +153,6 @@
 			var image = new Image();
 			image.src = "images/e0499.png";
 			image.addEventListener('load',function(){
-				console.log("image loaded");
 				for(var i = 1; i <= cx.length ; i++){
 					context.drawImage(image,(cx[i] - r*fractionOfDispSmall),(cy[i] - r*fractionOfDispSmall),fractionOfDispSmall*2*r,fractionOfDispSmall*2*r);
 				}

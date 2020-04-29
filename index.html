@@ -25,6 +25,7 @@
 		var angleBC; 	//angle between box and botom circle center (c0)
 		var leftImgBoxStartX,leftImgBoxStartY,rightImgBoxStartX,rightImgBoxStartY; //starting coodinates of first image boxes
 		var leftImageBoxW,leftImageBoxH,rightImgBoxW,rightImgBoxH; // dimensions of image boxes	
+		var imageBoxPadding;
 
 		window.onload = function(){
 			ww = window.innerWidth;
@@ -76,13 +77,15 @@
 			context.fill();
 			context.closePath();
 
+			// create image boxess
+			imageBoxPadding = 0.01*h;
 			// create left image box
 			var d = (r - cy[1] + cy[8])/r;
 			angleBC = Math.acos(d);
-			leftImgBoxStartX = pointSqx;
-			leftImgBoxStartY = pointSqy;
-			leftImageBoxH = dimPointSqy;
-			leftImageBoxW = R +3*r - r*Math.sin(angleBC);
+			leftImgBoxStartX = pointSqx + imageBoxPadding;
+			leftImgBoxStartY = pointSqy + imageBoxPadding;
+			leftImageBoxH = dimPointSqy - 2*imageBoxPadding;
+			leftImageBoxW = R +3*r - r*Math.sin(angleBC) - 2*imageBoxPadding;
 
 			var imageBoxLeft = new Image();
 			imageBoxLeft.src = "images/data5.jpg";
@@ -90,10 +93,11 @@
 				context.drawImage(imageBoxLeft,leftImgBoxStartX,leftImgBoxStartY,leftImageBoxW,leftImageBoxH);		
 			});
 
-			rightImgBoxStartX = cx[0] + r*Math.sin(angleBC);
-			rightImgBoxStartY = cy[1] + r*Math.cos(angleBC);
-			rightImgBoxH = leftImageBoxH;
-			rightImgBoxW = leftImageBoxW;
+			// create right image box
+			rightImgBoxStartX = cx[0] + r*Math.sin(angleBC) + imageBoxPadding;
+			rightImgBoxStartY = cy[1] + r*Math.cos(angleBC) + imageBoxPadding;
+			rightImgBoxH = leftImageBoxH ;//- 2*imageBoxPadding already added;
+			rightImgBoxW = leftImageBoxW ;//- 2*imageBoxPadding already added;
 
 			var imageBoxRight = new Image();
 			imageBoxRight.src = "images/data5.jpg";

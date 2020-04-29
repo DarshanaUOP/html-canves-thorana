@@ -97,9 +97,9 @@
 				context.strokeStyle = "rgba(255,255,255,1)";
 				context.fillStyle = "rgba(255,255,255,0.7)";
 				if (i == 0) {
-					context.arc(cx[i],cy[i],R * fractionOfDispLarge, Math.PI*2,false);
+					context.arc(cx[i],cy[i], R * fractionOfDispLarge , Math.PI*2,false);
 				}else{
-					context.arc(cx[i],cy[i],r* fractionOfDispSmall, Math.PI*2,false);
+					context.arc(cx[i],cy[i], r* fractionOfDispSmall , Math.PI*2,false);
 				}
 				context.stroke();
 				context.fill();
@@ -126,8 +126,9 @@
 			image.src = "images/e0499.png";
 			image.addEventListener('load',function(){
 				console.log("image loaded");
-				context.drawImage(image,cx[1] - fractionOfDispSmall*r/4,cy[1]-fractionOfDispSmall*r/4,2*fractionOfDispSmall*r,fractionOfDispSmall*r*2);
-				context.rotate(Math.PI/3);
+				for(var i = 1; i <= cx.length ; i++){
+					context.drawImage(image,(cx[i] - r*fractionOfDispSmall),(cy[i] - r*fractionOfDispSmall),fractionOfDispSmall*2*r,fractionOfDispSmall*2*r);
+				}
 			});
 
 

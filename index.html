@@ -144,25 +144,67 @@
 				context.closePath();
 			}
 
-			// small circles inner Bulb set
-			var dotSize = 0.0015*w;
-			var dotsForSmallCircle = {
-				numberOfDots : [50,60,70],
-				radii : [0.7,0.8,0.9]
-			};
+			// // small circles inner Bulb set
+			// var dotSize = 0.0015*w;
+			// var dotsForSmallCircle = {
+			// 	numberOfDots : [50,60,70],
+			// 	radii : [0.7,0.8,0.9]
+			// };
 
-			for (var k = 0; k < dotsForSmallCircle.radii.length; k++) {
-				context.strokeStyle = "rgba(255,255,255,0.2)";
-				context.fillStyle = "rgba(255,255,255,0.2)";
-				for (var j = 1; j < cx.length; j++) {
-					for(var i = 0; i<dotsForSmallCircle.numberOfDots[k] ;i++){
-						context.beginPath();
-						context.arc(cx[j] + r * dotsForSmallCircle.radii[k] * Math.cos(2*Math.PI/dotsForSmallCircle.numberOfDots[k]*i) ,cy[j] + r * dotsForSmallCircle.radii[k] * Math.sin(2*Math.PI/dotsForSmallCircle.numberOfDots[k]*i),dotSize,Math.PI*2,false);
-						context.stroke();
-						context.fill();
-						context.closePath();	
+			// for (var k = 0; k < dotsForSmallCircle.radii.length; k++) {
+			// 	context.strokeStyle = "rgba(255,255,255,0.2)";
+			// 	context.fillStyle = "rgba(255,255,255,0.2)";
+			// 	for (var j = 1; j < cx.length; j++) {
+			// 		for(var i = 0; i<dotsForSmallCircle.numberOfDots[k] ;i++){
+			// 			context.beginPath();
+			// 			context.arc(cx[j] + r * dotsForSmallCircle.radii[k] * Math.cos(2*Math.PI/dotsForSmallCircle.numberOfDots[k]*i) ,
+			// 				cy[j] + r * dotsForSmallCircle.radii[k] * Math.sin(2*Math.PI/dotsForSmallCircle.numberOfDots[k]*i),
+			// 				dotSize,Math.PI*2,
+			// 				false);
+			// 			context.stroke();
+			// 			context.fill();
+			// 			context.closePath();	
+			// 		}
+			// 	}
+			// }
+			
+			var intensity = 0.9 ;
+			function draw(){
+				// small circles inner Bulb set
+				var dotSize = 0.003*w;
+				var dotsForSmallCircle = {
+					numberOfDots : [20,25,30],
+					radii : [0.7,0.8,0.9]
+				};
+
+				// intensity = intensity + 0.01;
+				// if (intensity >0.9 ) {
+				// 	intensity = 0.1;
+				// }
+			
+				for (var k = 0; k < dotsForSmallCircle.radii.length; k++) {
+					// context.strokeStyle = "rgba(255,255,255,"+intensity+")";
+					context.fillStyle = "rgba("+Math.random()*255+","+Math.random()*255+","+Math.random()*255+","+intensity+")";
+					for (var j = 1; j < cx.length; j++) {
+						for(var i = 0; i<dotsForSmallCircle.numberOfDots[k] ;i++){
+							context.beginPath();
+							context.clearRect(cx[j] + r * dotsForSmallCircle.radii[k] * Math.cos(2*Math.PI/dotsForSmallCircle.numberOfDots[k]*i) - dotSize,
+								cy[j] + r * dotsForSmallCircle.radii[k] * Math.sin(2*Math.PI/dotsForSmallCircle.numberOfDots[k]*i) - dotSize,
+								2*dotSize,
+								2*dotSize);
+
+							context.arc(cx[j] + r * dotsForSmallCircle.radii[k] * Math.cos(2*Math.PI/dotsForSmallCircle.numberOfDots[k]*i) ,
+								cy[j] + r * dotsForSmallCircle.radii[k] * Math.sin(2*Math.PI/dotsForSmallCircle.numberOfDots[k]*i),
+								dotSize,
+								Math.PI*2,
+								false);
+							// context.stroke();
+							context.fill();
+							context.closePath();	
+						}
 					}
 				}
+				requestAnimationFrame(draw);
 			}
 
 			var image = new Image();
@@ -180,6 +222,8 @@
 				context.drawImage(imageCenter,(cx[0] - R*Math.sin(Math.PI/6) + 0.005*w),cy[0],dim,dim);
 				
 			});
+
+			draw();
 		}
 	</script>
 </body>

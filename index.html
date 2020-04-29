@@ -162,6 +162,16 @@
 				}
 			});
 
+			var imageCenter = new Image();
+			var dim = 2*R*Math.sin(Math.atan(0.5));
+			imageCenter.src = "images/e1472.png";
+			imageCenter.addEventListener('load',function(){
+				context.drawImage(imageCenter,(cx[0] - R*Math.sin(Math.PI/6) + 0.005*w),cy[0],dim,dim);
+				
+			});
+
+
+
 
 		}
 

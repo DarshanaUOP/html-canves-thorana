@@ -128,7 +128,7 @@
 			}
 
 			fractionOfDispSmall = 0.6 ;
-			fractionOfDispLarge = 0.2 ;
+			fractionOfDispLarge = 0.1 ;
 			for(var i = 0; i <= cx.length ; i++){
 				//draw inner circle of each circles
 				context.beginPath();
@@ -168,15 +168,54 @@
 			// 	}
 			// }
 			
+
+			// Center circle inner Bulb animations set
+
+			var flowerCenter = 0.75*R*(1 - fractionOfDispLarge);
+			var flowerCenterDotSize = 0.004*w;
+			var flowerOuterDotSize = 0.0038*w;
+			var flowerLevel1FormCenter = 0.01 *w;
+			// var flowerLevel2FormCenter = flowerLevel1FormCenter *2;
+
+			function centerCirclePattern(){
+				for (var i1 = 0 ;i1 <8 ;i1++){
+					if (i1 == 2) {
+						continue;
+					}else{
+						var flowerX = cx[0] + flowerCenter * Math.cos(Math.PI/4*i1);
+						var flowerY = cy[0] + flowerCenter * Math.sin(Math.PI/4*i1); 
+						context.beginPath();
+						context.fillStyle = "rgba(255,255,255,"+Math.random()+")";
+						context.clearRect(flowerX-0.5*flowerOuterDotSize,flowerY-0.5*flowerOuterDotSize,2*flowerOuterDotSize,flowerOuterDotSize*2);
+						context.arc(flowerX ,flowerY, flowerCenterDotSize  , Math.PI*2,false);
+						context.fill();
+						context.closePath();
+
+						// flower level 1
+						for(var i2 = 0 ; i2 < 6 ;i2++){
+							context.beginPath();
+							context.fillStyle = "rgba(255,"+255*Math.random()+",0,"+Math.random()+")";
+							// context.arc(flowerX + 0.002*w ,flowerY + 0.008 *w, flowerOuterDotSize  , Math.PI*2,false);
+
+							context.arc(flowerX + flowerLevel1FormCenter * Math.sin(2*Math.PI/6*i2),flowerY + flowerLevel1FormCenter* Math.cos(2*Math.PI/6*i2), flowerOuterDotSize  , Math.PI*2,false);
+							context.fill();
+							context.closePath();
+						}
+					}
+				}
+				requestAnimationFrame(centerCirclePattern);
+			}
+
+			centerCirclePattern();
 			
-			function draw(){
-				// small circles inner Bulb animations set
-				var intensity = 0.9 ;	
-				var dotSize = 0.003*w;
-				var dotsForSmallCircle = {
-					numberOfDots : [12,24,36],
-					radii : [0.7,0.8,0.9]
-				};
+			// small circles inner Bulb animations set
+			var intensity = 0.9 ;	
+			var dotSize = 0.003*w;
+			var dotsForSmallCircle = {
+				numberOfDots : [12,24,36],
+				radii : [0.7,0.8,0.9]
+			};
+			function drawInnerCirclePattern(){
 			
 				for (var k = 0; k < dotsForSmallCircle.radii.length; k++) {
 					// context.strokeStyle = "rgba(255,255,255,"+intensity+")";
@@ -200,7 +239,7 @@
 						}
 					}
 				}
-				requestAnimationFrame(draw);
+				requestAnimationFrame(drawInnerCirclePattern);
 			}
 
 			var image = new Image();
@@ -219,7 +258,9 @@
 				
 			});
 
-			draw();
+
+
+			drawInnerCirclePattern();
 		}
 	</script>
 </body>

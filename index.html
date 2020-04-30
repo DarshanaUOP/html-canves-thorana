@@ -171,10 +171,10 @@
 
 			// Center circle inner Bulb animations set
 
-			var flowerCenter = 0.75*R*(1 - fractionOfDispLarge);
+			var flowerCenter = 0.88*R*(1 - fractionOfDispLarge);
 			var flowerCenterDotSize = 0.004*w;
 			var flowerOuterDotSize = 0.0038*w;
-			var flowerLevel1FormCenter = 0.01 *w;
+			var flowerLevel1FormCenter = 0.012 *w;
 			// var flowerLevel2FormCenter = flowerLevel1FormCenter *2;
 
 			function centerCirclePattern(){
@@ -186,18 +186,29 @@
 						var flowerY = cy[0] + flowerCenter * Math.sin(Math.PI/4*i1); 
 						context.beginPath();
 						context.fillStyle = "rgba(255,255,255,"+Math.random()+")";
-						context.clearRect(flowerX-0.5*flowerOuterDotSize,flowerY-0.5*flowerOuterDotSize,2*flowerOuterDotSize,flowerOuterDotSize*2);
+						// context.clearRect(flowerX-flowerCenterDotSize,flowerY-flowerCenterDotSize,2*flowerOuterDotSize,flowerOuterDotSize*2);
 						context.arc(flowerX ,flowerY, flowerCenterDotSize  , Math.PI*2,false);
 						context.fill();
 						context.closePath();
 
 						// flower level 1
-						for(var i2 = 0 ; i2 < 6 ;i2++){
+						var countOuterFlowers = 6;
+						var red = 255*Math.random();
+						var intense = Math.random();
+
+						for(var i2 = 0 ; i2 < countOuterFlowers ;i2++){
+							var level2posX = flowerX + flowerLevel1FormCenter * Math.sin(2*Math.PI/countOuterFlowers*i2);
+							var level2posY = flowerY + flowerLevel1FormCenter * Math.cos(2*Math.PI/countOuterFlowers*i2);
+							
 							context.beginPath();
-							context.fillStyle = "rgba(255,"+255*Math.random()+",0,"+Math.random()+")";
+							
+							context.fillStyle = "rgba(0,0,0,1)";
+							// context.clearRect(level2posX - flowerOuterDotSize,level2posY - flowerOuterDotSize,flowerOuterDotSize,flowerOuterDotSize);
+							
 							// context.arc(flowerX + 0.002*w ,flowerY + 0.008 *w, flowerOuterDotSize  , Math.PI*2,false);
 
-							context.arc(flowerX + flowerLevel1FormCenter * Math.sin(2*Math.PI/6*i2),flowerY + flowerLevel1FormCenter* Math.cos(2*Math.PI/6*i2), flowerOuterDotSize  , Math.PI*2,false);
+							context.fillStyle = "rgba("+red+",10,0,"+intense+")";
+							context.arc(level2posX,level2posY, flowerOuterDotSize  , Math.PI*2,false);
 							context.fill();
 							context.closePath();
 						}
@@ -239,7 +250,7 @@
 						}
 					}
 				}
-				requestAnimationFrame(drawInnerCirclePattern);
+				// requestAnimationFrame(drawInnerCirclePattern);
 			}
 
 			var image = new Image();

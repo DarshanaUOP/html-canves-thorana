@@ -39,10 +39,24 @@
 
 			myCanvas = document.getElementById('myCanvas');
 			myCanvas.width = ww;
-			myCanvas.height = ww/2; 
+			myCanvas.height = ww/2;
+			 
+			//full screen function
+			function fullscreen(){
+	           // var el = document.getElementById('canvas');
+	           if(myCanvas.webkitRequestFullScreen) {
+	               myCanvas.webkitRequestFullScreen();
+	           }
+	          else {
+	             myCanvas.mozRequestFullScreen();
+	          }            
+			}
+			myCanvas.addEventListener("click",fullscreen);
 
 			w = myCanvas.width;
 			h = myCanvas.height;
+
+	 
 
 			//calculate r and R (radii) - *get canvas dimentions [leave margings from top and bottom and use rest for draw circles]
 			marginTop = 0.04;  // 4% of w
@@ -250,7 +264,7 @@
 						}
 					}
 				}
-				// requestAnimationFrame(drawInnerCirclePattern);
+				requestAnimationFrame(drawInnerCirclePattern);
 			}
 
 			var image = new Image();

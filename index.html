@@ -234,10 +234,10 @@
 					for (var j = 1; j < cx.length; j++) {
 						for(var i = 0; i<dotsForSmallCircle.numberOfDots[k] ;i++){
 							context.beginPath();
-							context.clearRect(cx[j] + r * dotsForSmallCircle.radii[k] * Math.cos(2*Math.PI/dotsForSmallCircle.numberOfDots[k]*i) - dotSize,
-								cy[j] + r * dotsForSmallCircle.radii[k] * Math.sin(2*Math.PI/dotsForSmallCircle.numberOfDots[k]*i) - dotSize,
-								2*dotSize,
-								2*dotSize);
+							// context.clearRect(cx[j] + r * dotsForSmallCircle.radii[k] * Math.cos(2*Math.PI/dotsForSmallCircle.numberOfDots[k]*i) - dotSize,
+							// 	cy[j] + r * dotsForSmallCircle.radii[k] * Math.sin(2*Math.PI/dotsForSmallCircle.numberOfDots[k]*i) - dotSize,
+							// 	2*dotSize,
+							// 	2*dotSize);
 
 							context.arc(cx[j] + r * dotsForSmallCircle.radii[k] * Math.cos(2*Math.PI/dotsForSmallCircle.numberOfDots[k]*i) ,
 								cy[j] + r * dotsForSmallCircle.radii[k] * Math.sin(2*Math.PI/dotsForSmallCircle.numberOfDots[k]*i),

@@ -192,7 +192,7 @@
 							var level2posY = flowerY + flowerLevel1FormCenter * Math.sin(flowerOuterDotAngle);
 							
 							context.beginPath();
-							context.fillStyle = "rgba(0,0,0,1)";
+							// context.fillStyle = "rgba(0,0,0,1)";
 							// context.clearRect(level2posX - flowerOuterDotSize,level2posY - flowerOuterDotSize,flowerOuterDotSize,flowerOuterDotSize);
 							context.fillStyle = "rgba("+red+",10,0,"+intense+")";
 							context.arc(level2posX,level2posY, flowerOuterDotSize  , Math.PI*2,false);
@@ -205,11 +205,32 @@
 			}
 			centerCircleFlowerPattern();
 			
-			function centerCircleFillerPattern(){
-				for(var i3 = 0; i3<7;i2++){
-
-				}
+			// center circle filler patern
+			var numberOfDotsEach = {
+				line:[6,12,18,24,30,36]
 			}
+			function centerCircleFillerPattern(){
+				for(var i4 = 0;i4<5 ;i4++){
+					for(var i3 = 0;i3<numberOfDotsEach.line[i4] ;i3++){
+						var plotAngle = 2*Math.PI/numberOfDotsEach.line[i4]*i3;
+						if (plotAngle > Math.PI/4 && plotAngle < Math.PI/4*3) {
+							continue;
+						}else{
+							var localR =  (2+i4)*fractionOfDispLarge*R;
+							var dotX = cx[0] + localR * Math.cos(2*Math.PI/numberOfDotsEach.line[i4]*i3);
+							var dotY = cy[0] + localR * Math.sin(2*Math.PI/numberOfDotsEach.line[i4]*i3);
+
+							context.beginPath();
+							context.fillStyle = "rgba(0,255,0,1)";
+							context.arc(dotX,dotY,flowerCenterDotSize*3/4,2*Math.PI,false);
+							context.fill();
+							context.closePath();
+						}
+					}
+				}
+					// console.log('px' + i3);
+			}
+			centerCircleFillerPattern();
 
 			// small circles inner Bulb animations set
 			var intensity = 0.9 ;	

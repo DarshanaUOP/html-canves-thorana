@@ -155,38 +155,14 @@
 				context.fill();
 				context.closePath();
 			}
-
-			// // small circles inner Bulb set
-			// var dotSize = 0.0015*w;
-			// var dotsForSmallCircle = {
-			// 	numberOfDots : [50,60,70],
-			// 	radii : [0.7,0.8,0.9]
-			// };
-
-			// for (var k = 0; k < dotsForSmallCircle.radii.length; k++) {
-			// 	context.strokeStyle = "rgba(255,255,255,0.2)";
-			// 	context.fillStyle = "rgba(255,255,255,0.2)";
-			// 	for (var j = 1; j < cx.length; j++) {
-			// 		for(var i = 0; i<dotsForSmallCircle.numberOfDots[k] ;i++){
-			// 			context.beginPath();
-			// 			context.arc(cx[j] + r * dotsForSmallCircle.radii[k] * Math.cos(2*Math.PI/dotsForSmallCircle.numberOfDots[k]*i) ,
-			// 				cy[j] + r * dotsForSmallCircle.radii[k] * Math.sin(2*Math.PI/dotsForSmallCircle.numberOfDots[k]*i),
-			// 				dotSize,Math.PI*2,
-			// 				false);
-			// 			context.stroke();
-			// 			context.fill();
-			// 			context.closePath();	
-			// 		}
-			// 	}
-			// }
 			
-
 			// Center circle inner Bulb animations set
 
 			var flowerCenter = 0.88*R*(1 - fractionOfDispLarge);
 			var flowerCenterDotSize = 0.004*w;
 			var flowerOuterDotSize = 0.0038*w;
 			var flowerLevel1FormCenter = 0.012 *w;
+			var countOuterFlowers = 5;
 			// var flowerLevel2FormCenter = flowerLevel1FormCenter *2;
 
 			function centerCircleFlowerPattern(){
@@ -194,8 +170,9 @@
 					if (i1 == 2) {
 						continue;
 					}else{
-						var flowerX = cx[0] + flowerCenter * Math.cos(Math.PI/4*i1);
-						var flowerY = cy[0] + flowerCenter * Math.sin(Math.PI/4*i1); 
+						var flowerCenterAngle = Math.PI/4*i1; // 2*PI/8 = PI/4
+						var flowerX = cx[0] + flowerCenter * Math.cos(flowerCenterAngle);
+						var flowerY = cy[0] + flowerCenter * Math.sin(flowerCenterAngle); 
 						context.beginPath();
 						context.fillStyle = "rgba(255,255,255,"+Math.random()+")";
 						// context.clearRect(flowerX-flowerCenterDotSize,flowerY-flowerCenterDotSize,2*flowerOuterDotSize,flowerOuterDotSize*2);
@@ -204,21 +181,19 @@
 						context.closePath();
 
 						// flower level 1
-						var countOuterFlowers = 6;
+						
 						var red = 255*Math.random();
 						var intense = Math.random();
 
 						for(var i2 = 0 ; i2 < countOuterFlowers ;i2++){
-							var level2posX = flowerX + flowerLevel1FormCenter * Math.sin(2*Math.PI/countOuterFlowers*i2);
-							var level2posY = flowerY + flowerLevel1FormCenter * Math.cos(2*Math.PI/countOuterFlowers*i2);
+							var flowerOuterDotAngle = flowerCenterAngle + 2*Math.PI/countOuterFlowers*i2;
+
+							var level2posX = flowerX + flowerLevel1FormCenter * Math.cos(flowerOuterDotAngle);
+							var level2posY = flowerY + flowerLevel1FormCenter * Math.sin(flowerOuterDotAngle);
 							
 							context.beginPath();
-							
 							context.fillStyle = "rgba(0,0,0,1)";
 							// context.clearRect(level2posX - flowerOuterDotSize,level2posY - flowerOuterDotSize,flowerOuterDotSize,flowerOuterDotSize);
-							
-							// context.arc(flowerX + 0.002*w ,flowerY + 0.008 *w, flowerOuterDotSize  , Math.PI*2,false);
-
 							context.fillStyle = "rgba("+red+",10,0,"+intense+")";
 							context.arc(level2posX,level2posY, flowerOuterDotSize  , Math.PI*2,false);
 							context.fill();
@@ -228,9 +203,14 @@
 				}
 				requestAnimationFrame(centerCircleFlowerPattern);
 			}
-
 			centerCircleFlowerPattern();
 			
+			function centerCircleFillerPattern(){
+				for(var i3 = 0; i3<7;i2++){
+
+				}
+			}
+
 			// small circles inner Bulb animations set
 			var intensity = 0.9 ;	
 			var dotSize = 0.003*w;

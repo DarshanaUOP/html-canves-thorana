@@ -211,6 +211,7 @@
 			}
 			function centerCircleFillerPattern(){
 				for(var i4 = 0;i4<5 ;i4++){
+					var intensity2 = Math.random();
 					for(var i3 = 0;i3<numberOfDotsEach.line[i4] ;i3++){
 						var plotAngle = 2*Math.PI/numberOfDotsEach.line[i4]*i3;
 						if (plotAngle > Math.PI/4 && plotAngle < Math.PI/4*3) {
@@ -221,7 +222,8 @@
 							var dotY = cy[0] + localR * Math.sin(2*Math.PI/numberOfDotsEach.line[i4]*i3);
 
 							context.beginPath();
-							context.fillStyle = "rgba(0,255,0,1)";
+							context.fillStyle = "rgba(0,"+255*intensity2+",0,0.6)";
+
 							context.arc(dotX,dotY,flowerCenterDotSize*3/4,2*Math.PI,false);
 							context.fill();
 							context.closePath();
@@ -229,6 +231,7 @@
 					}
 				}
 					// console.log('px' + i3);
+					requestAnimationFrame(centerCircleFillerPattern);
 			}
 			centerCircleFillerPattern();
 

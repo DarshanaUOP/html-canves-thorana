@@ -56,8 +56,6 @@
 			w = myCanvas.width;
 			h = myCanvas.height;
 
-	 
-
 			//calculate r and R (radii) - *get canvas dimentions [leave margings from top and bottom and use rest for draw circles]
 			marginTop = 0.04;  // 4% of w
 			marginBotom = 0.1; // 10% of w
@@ -191,7 +189,7 @@
 			var flowerLevel1FormCenter = 0.012 *w;
 			// var flowerLevel2FormCenter = flowerLevel1FormCenter *2;
 
-			function centerCirclePattern(){
+			function centerCircleFlowerPattern(){
 				for (var i1 = 0 ;i1 <8 ;i1++){
 					if (i1 == 2) {
 						continue;
@@ -228,10 +226,10 @@
 						}
 					}
 				}
-				requestAnimationFrame(centerCirclePattern);
+				requestAnimationFrame(centerCircleFlowerPattern);
 			}
 
-			centerCirclePattern();
+			centerCircleFlowerPattern();
 			
 			// small circles inner Bulb animations set
 			var intensity = 0.9 ;	

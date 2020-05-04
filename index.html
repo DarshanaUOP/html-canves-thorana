@@ -207,7 +207,7 @@
 			
 			// center circle filler patern
 			var numberOfDotsEach = {
-				line:[6,12,18,12,30]
+				line:[6,12,18,12,30,]
 			}
 			function centerCircleFillerPattern(){
 				for(var i4 = 0;i4<5 ;i4++){
@@ -224,7 +224,7 @@
 							context.beginPath();
 							context.fillStyle = "rgba(0,"+255*intensity2+",0,0.6)";
 
-							context.arc(dotX,dotY,flowerCenterDotSize*3/4,2*Math.PI,false);
+							context.arc(dotX,dotY,flowerCenterDotSize*0.75,2*Math.PI,false);
 							context.fill();
 							context.closePath();
 						}
@@ -269,6 +269,12 @@
 				requestAnimationFrame(drawInnerCirclePattern);
 			}
 
+			function drawOuterLine(){
+					
+			}
+			drawOuterLine();
+
+
 			var image = new Image();
 			image.src = "images/e0499.png";
 			image.addEventListener('load',function(){
@@ -284,10 +290,9 @@
 				context.drawImage(imageCenter,(cx[0] - R*Math.sin(Math.PI/6) + 0.005*w),cy[0],dim,dim);
 				
 			});
-
-
-
 			drawInnerCirclePattern();
+
+
 		}
 	</script>
 </body>

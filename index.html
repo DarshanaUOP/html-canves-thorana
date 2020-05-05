@@ -312,14 +312,14 @@
 
 			//start patterns to run:
 			// drawInnerCirclePattern();
-			setInterval(drawInnerCirclePattern,1000);
+			var triggerTime = 400;
+			setInterval(drawInnerCirclePattern,triggerTime);
 			// centerCircleFillerPattern();
-			setInterval(centerCircleFillerPattern,1000);
+			setInterval(centerCircleFillerPattern,triggerTime);
 			// centerCircleFlowerPattern();
-			setInterval(centerCircleFlowerPattern,500);
-
-			// drawOuterLine
-			setInterval(drawOuterLine,1000);
+			setInterval(centerCircleFlowerPattern,triggerTime/2);
+			// drawOuterLine()
+			setInterval(drawOuterLine,triggerTime);
 
 
 		}

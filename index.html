@@ -336,14 +336,45 @@
 
 
 				// drow box outline
-				pointX = cx[2] +  (1 + fr)*r * Math.sin(beta);
-				pointY = cy[2] +  (1 + fr)*r * Math.cos(beta);
-				
+				var boxUpperStertX = cx[2] +  (1 + fr)*r * Math.sin(beta);
+				var boxUpperStertY = cy[2] +  (1 + fr)*r * Math.cos(beta);
+				var boxUpperEndX = cx[0] + R + (3)*r ; // box upper end y is same as end 
+				// pointX = boxUpperStertX;
+				// pointY = boxUpperStertY;
+				var boxUpperNumberOfDots = 12;
+				var boxUpperDeltaX = (boxUpperEndX - boxUpperStertX)/boxUpperNumberOfDots;
+				for(var x = boxUpperStertX ; x<= boxUpperEndX ;x=x+boxUpperDeltaX ){
+					context.fillStyle = "rgba(0,0,255,0.5)";
+					context.beginPath();
+					context.arc(x,boxUpperStertY,dotSize,Math.PI*2,false);
+					context.fill();
+					context.closePath();
+
+					//MIRROR
+					context.fillStyle = "rgba(0,0,255,0.5)";
+					context.beginPath();
+					context.arc(cx[0]*2 - x,boxUpperStertY,dotSize,Math.PI*2,false);
+					context.fill();
+					context.closePath();
+
+
+				}
+				//starting point
 				context.fillStyle = "rgba(0,0,255,0.5)";
 				context.beginPath();
-				context.arc(pointX,pointY,dotSize,Math.PI*2,false);
+				context.arc(boxUpperStertX,boxUpperStertY,dotSize,Math.PI*2,false);
 				context.fill();
 				context.closePath();
+				//mirror starting point
+				context.fillStyle = "rgba(0,0,255,0.5)";
+				context.beginPath();
+				context.arc(cx[0] *2 - boxUpperStertX,boxUpperStertY,dotSize,Math.PI*2,false);
+				context.fill();
+				context.closePath();
+
+				// dimPointSqx
+				
+								
 
 
 			}
@@ -367,7 +398,7 @@
 
 			//start patterns to run:
 			// drawInnerCirclePattern();
-			var triggerTime = 300;
+			var triggerTime = 250;
 			setInterval(drawInnerCirclePattern,triggerTime);
 			// centerCircleFillerPattern();
 			setInterval(centerCircleFillerPattern,triggerTime);

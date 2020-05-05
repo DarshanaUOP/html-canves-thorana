@@ -334,13 +334,14 @@
 					context.closePath();					
 				}
 
-
 				// drow box outline
 				var boxUpperStertX = cx[2] +  (1 + fr)*r * Math.sin(beta);
 				var boxUpperStertY = cy[2] +  (1 + fr)*r * Math.cos(beta);
 				var boxUpperEndX = cx[0] + R + (3)*r ; // box upper end y is same as end 
 				// pointX = boxUpperStertX;
 				// pointY = boxUpperStertY;
+				var boxUpperLastX;
+
 				var boxUpperNumberOfDots = 12;
 				var boxUpperDeltaX = (boxUpperEndX - boxUpperStertX)/boxUpperNumberOfDots;
 				for(var x = boxUpperStertX ; x<= boxUpperEndX ;x=x+boxUpperDeltaX ){
@@ -356,27 +357,10 @@
 					context.arc(cx[0]*2 - x,boxUpperStertY,dotSize,Math.PI*2,false);
 					context.fill();
 					context.closePath();
-
+					boxUpperLastX = x;
 
 				}
-				//starting point
-				context.fillStyle = "rgba(0,0,255,0.5)";
-				context.beginPath();
-				context.arc(boxUpperStertX,boxUpperStertY,dotSize,Math.PI*2,false);
-				context.fill();
-				context.closePath();
-				//mirror starting point
-				context.fillStyle = "rgba(0,0,255,0.5)";
-				context.beginPath();
-				context.arc(cx[0] *2 - boxUpperStertX,boxUpperStertY,dotSize,Math.PI*2,false);
-				context.fill();
-				context.closePath();
-
-				// dimPointSqx
 				
-								
-
-
 			}
 			// drawOuterLine();
 
@@ -406,8 +390,6 @@
 			setInterval(centerCircleFlowerPattern,triggerTime/2);
 			// drawOuterLine()
 			setInterval(drawOuterLine,triggerTime);
-
-
 		}
 	</script>
 </body>

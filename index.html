@@ -32,6 +32,7 @@
 		var leftImgBoxStartX,leftImgBoxStartY,rightImgBoxStartX,rightImgBoxStartY; //starting coodinates of first image boxes
 		var leftImageBoxW,leftImageBoxH,rightImgBoxW,rightImgBoxH; // dimensions of image boxes	
 		var imageBoxPadding;
+		var pointX,pointY;
 
 		window.onload = function(){
 			ww = window.innerWidth;
@@ -274,7 +275,7 @@
 				// var alpha = Math.atan((Math.sqrt(3)*fr)/(2*Math.sqrt(2) + fr));
 				var alpha = 0.625 * Math.PI - Math.acos(1/(1 + fr));
 				var k = 0;
-				var pointX,pointY;
+				
 
 				for (var j = 3; j <= 7; j++) {
 					for (var i = -numberOfDotsOuterRing; i < numberOfDotsOuterRing; i++) {
@@ -283,7 +284,7 @@
 						pointY = cy[j] + r*(1+fr) * Math.sin(-k * Math.PI/4 + alpha/numberOfDotsOuterRing*i);
 						
 						context.beginPath();
-						context.arc(pointX,pointY,dotSize,Math.PI*2,false);
+						context.arc(pointX,pointY,0.8*dotSize,Math.PI*2,false);
 						context.fill();
 						context.closePath();						
 					}
@@ -295,17 +296,41 @@
 				
 				var rightStartAngle = Math.PI/4 - alpha;
 
-				var fullAngle = 3/4*Math.PI - (alpha + beta);
+				var fullAngle = 0.75*Math.PI - (alpha + beta);
 
-				pointX = cx[2] +  (1 + fr)*r * Math.cos(rightStartAngle);
-				pointY = cy[2] +  (1 + fr)*r * Math.sin(rightStartAngle);
+				// pointX = cx[2] +  (1 + fr)*r * Math.cos(rightStartAngle);
+				// pointY = cy[2] +  (1 + fr)*r * Math.sin(rightStartAngle);
 				
-				context.fillStyle = "rgba(0,0,255,0.5)";
-				context.beginPath();
-				context.arc(pointX,pointY,dotSize,Math.PI*2,false);
-				context.fill();
-				context.closePath();
+				// context.fillStyle = "rgba(0,0,255,0.5)";
+				// context.beginPath();
+				// context.arc(pointX,pointY,dotSize,Math.PI*2,false);
+				// context.fill();
+				// context.closePath();
 
+
+
+				// var numberOfDotsOuterRingRight = ((numberOfDotsOuterRing*(Math.abs(rightStartAngle-beta))))/(2*alpha);
+				// console.log(numberOfDotsOuterRingRight);
+				// console.log(beta);
+				var delta = ((-rightStartAngle + beta)/numberOfDotsOuterRing);
+				// console.log(delta*180/(Math.PI));
+
+				for(var k = 0; k<=(numberOfDotsOuterRing + 1); k++){
+
+					pointX = cx[2] +  (1 + fr)*r * Math.cos(rightStartAngle + delta * k);
+					pointY = cy[2] +  (1 + fr)*r * Math.sin(rightStartAngle + delta * k);
+					
+					context.fillStyle = "rgba(255,0,255,0.5)";
+					context.beginPath();
+					context.arc(pointX,pointY,dotSize,Math.PI*2,false);
+					context.fill();
+					context.closePath();
+
+					
+				}
+
+
+				// drow box outline
 				pointX = cx[2] +  (1 + fr)*r * Math.sin(beta);
 				pointY = cy[2] +  (1 + fr)*r * Math.cos(beta);
 				
@@ -315,7 +340,7 @@
 				context.fill();
 				context.closePath();
 
-				
+
 			}
 			// drawOuterLine();
 

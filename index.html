@@ -274,20 +274,20 @@
 				// var alpha = Math.atan((Math.sqrt(3)*fr)/(2*Math.sqrt(2) + fr));
 				var alpha = 0.625 * Math.PI - Math.acos(1/(1 + fr));
 				var k = 0;
+				var pointX,pointY;
 
 				for (var j = 3; j <= 7; j++) {
 					for (var i = -numberOfDotsOuterRing; i < numberOfDotsOuterRing; i++) {
-						console.log(k);
 						context.fillStyle = "rgba("+255*Math.random()+",255,255,1)";
-						var pointX = cx[j] + r*(1+fr)*Math.cos(-k * Math.PI/4 + alpha/numberOfDotsOuterRing*i);
-						var pointY = cy[j] + r*(1+fr)*Math.sin(-k * Math.PI/4 + alpha/numberOfDotsOuterRing*i);
+						pointX = cx[j] + r*(1+fr) * Math.cos(-k * Math.PI/4 + alpha/numberOfDotsOuterRing*i);
+						pointY = cy[j] + r*(1+fr) * Math.sin(-k * Math.PI/4 + alpha/numberOfDotsOuterRing*i);
 						
 						context.beginPath();
 						context.arc(pointX,pointY,dotSize,Math.PI*2,false);
 						context.fill();
-						context.closePath();
-						
+						context.closePath();						
 					}
+
 					k++;
 				}
 			}

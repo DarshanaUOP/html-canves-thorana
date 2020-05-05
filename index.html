@@ -270,7 +270,21 @@
 			}
 
 			function drawOuterLine(){
+				var numberOfDotsOuterRing = 10;
+				var fr = 0.1;
+
+				context.fillStyle = "rgba(255,255,0,1)";
+				// var alpha = Math.atan((Math.sqrt(3)*fr)/(2*Math.sqrt(2) + fr));
+				var alpha = 0.625 * Math.PI - Math.acos(1/(1 + fr));
+				for (var i = -numberOfDotsOuterRing; i < numberOfDotsOuterRing; i++) {
+					var pointX = cx[3] + r*(1+fr)*Math.cos(alpha/numberOfDotsOuterRing*i);
+					var pointY = cy[3] + r*(1+fr)*Math.sin(alpha/numberOfDotsOuterRing*i);
 					
+					context.beginPath();
+					context.arc(pointX,pointY,dotSize,Math.PI*2,false);
+					context.fill();
+					context.closePath();
+				}
 			}
 			drawOuterLine();
 

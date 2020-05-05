@@ -165,7 +165,7 @@
 			var countOuterFlowers = 5;
 			// var flowerLevel2FormCenter = flowerLevel1FormCenter *2;
 
-			function centerCircleFlowerPattern(){
+			var centerCircleFlowerPattern = function(){
 				for (var i1 = 0 ;i1 <8 ;i1++){
 					if (i1 == 2) {
 						continue;
@@ -201,15 +201,14 @@
 						}
 					}
 				}
-				requestAnimationFrame(centerCircleFlowerPattern);
+				// requestAnimationFrame(centerCircleFlowerPattern);
 			}
-			centerCircleFlowerPattern();
 			
 			// center circle filler patern
 			var numberOfDotsEach = {
 				line:[6,12,18,12,30,]
 			}
-			function centerCircleFillerPattern(){
+			var centerCircleFillerPattern = function(){
 				for(var i4 = 0;i4<5 ;i4++){
 					var intensity2 = Math.random();
 					for(var i3 = 0;i3<numberOfDotsEach.line[i4] ;i3++){
@@ -231,9 +230,8 @@
 					}
 				}
 					// console.log('px' + i3);
-					requestAnimationFrame(centerCircleFillerPattern);
+					// requestAnimationFrame(centerCircleFillerPattern);
 			}
-			centerCircleFillerPattern();
 
 			// small circles inner Bulb animations set
 			var intensity = 0.9 ;	
@@ -242,7 +240,7 @@
 				numberOfDots : [12,24,36],
 				radii : [0.7,0.8,0.9]
 			};
-			function drawInnerCirclePattern(){
+			var drawInnerCirclePattern = function(){
 			
 				for (var k = 0; k < dotsForSmallCircle.radii.length; k++) {
 					// context.strokeStyle = "rgba(255,255,255,"+intensity+")";
@@ -266,27 +264,34 @@
 						}
 					}
 				}
-				requestAnimationFrame(drawInnerCirclePattern);
+				// requestAnimationFrame(drawInnerCirclePattern);
 			}
 
-			function drawOuterLine(){
-				var numberOfDotsOuterRing = 10;
+			var drawOuterLine = function(){
+				var numberOfDotsOuterRing = 8;
 				var fr = 0.1;
 
-				context.fillStyle = "rgba(255,255,0,1)";
 				// var alpha = Math.atan((Math.sqrt(3)*fr)/(2*Math.sqrt(2) + fr));
 				var alpha = 0.625 * Math.PI - Math.acos(1/(1 + fr));
-				for (var i = -numberOfDotsOuterRing; i < numberOfDotsOuterRing; i++) {
-					var pointX = cx[3] + r*(1+fr)*Math.cos(alpha/numberOfDotsOuterRing*i);
-					var pointY = cy[3] + r*(1+fr)*Math.sin(alpha/numberOfDotsOuterRing*i);
-					
-					context.beginPath();
-					context.arc(pointX,pointY,dotSize,Math.PI*2,false);
-					context.fill();
-					context.closePath();
+				var k = 0;
+
+				for (var j = 3; j <= 7; j++) {
+					for (var i = -numberOfDotsOuterRing; i < numberOfDotsOuterRing; i++) {
+						console.log(k);
+						context.fillStyle = "rgba("+255*Math.random()+",255,255,1)";
+						var pointX = cx[j] + r*(1+fr)*Math.cos(-k * Math.PI/4 + alpha/numberOfDotsOuterRing*i);
+						var pointY = cy[j] + r*(1+fr)*Math.sin(-k * Math.PI/4 + alpha/numberOfDotsOuterRing*i);
+						
+						context.beginPath();
+						context.arc(pointX,pointY,dotSize,Math.PI*2,false);
+						context.fill();
+						context.closePath();
+						
+					}
+					k++;
 				}
 			}
-			drawOuterLine();
+			// drawOuterLine();
 
 
 			var image = new Image();
@@ -304,7 +309,17 @@
 				context.drawImage(imageCenter,(cx[0] - R*Math.sin(Math.PI/6) + 0.005*w),cy[0],dim,dim);
 				
 			});
-			drawInnerCirclePattern();
+
+			//start patterns to run:
+			// drawInnerCirclePattern();
+			setInterval(drawInnerCirclePattern,1000);
+			// centerCircleFillerPattern();
+			setInterval(centerCircleFillerPattern,1000);
+			// centerCircleFlowerPattern();
+			setInterval(centerCircleFlowerPattern,500);
+
+			// drawOuterLine
+			setInterval(drawOuterLine,1000);
 
 
 		}

@@ -326,7 +326,12 @@
 					context.fill();
 					context.closePath();
 
-					
+					//mirror for left side
+					pointX = 2*cx[0]-pointX;
+					context.beginPath();
+					context.arc(pointX,pointY,dotSize,Math.PI*2,false);
+					context.fill();
+					context.closePath();					
 				}
 
 

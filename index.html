@@ -278,7 +278,7 @@
 
 				for (var j = 3; j <= 7; j++) {
 					for (var i = -numberOfDotsOuterRing; i < numberOfDotsOuterRing; i++) {
-						context.fillStyle = "rgba("+255*Math.random()+",255,255,1)";
+						context.fillStyle = "rgba("+255*Math.random()+",255,255,0.5)";
 						pointX = cx[j] + r*(1+fr) * Math.cos(-k * Math.PI/4 + alpha/numberOfDotsOuterRing*i);
 						pointY = cy[j] + r*(1+fr) * Math.sin(-k * Math.PI/4 + alpha/numberOfDotsOuterRing*i);
 						
@@ -287,12 +287,37 @@
 						context.fill();
 						context.closePath();						
 					}
-
 					k++;
 				}
+
+				// right corner
+				var beta = Math.acos((1 - fr)/(1 + fr));
+				
+				var rightStartAngle = Math.PI/4 - alpha;
+
+				var fullAngle = 3/4*Math.PI - (alpha + beta);
+
+				pointX = cx[2] +  (1 + fr)*r * Math.cos(rightStartAngle);
+				pointY = cy[2] +  (1 + fr)*r * Math.sin(rightStartAngle);
+				
+				context.fillStyle = "rgba(0,0,255,0.5)";
+				context.beginPath();
+				context.arc(pointX,pointY,dotSize,Math.PI*2,false);
+				context.fill();
+				context.closePath();
+
+				pointX = cx[2] +  (1 + fr)*r * Math.sin(beta);
+				pointY = cy[2] +  (1 + fr)*r * Math.cos(beta);
+				
+				context.fillStyle = "rgba(0,0,255,0.5)";
+				context.beginPath();
+				context.arc(pointX,pointY,dotSize,Math.PI*2,false);
+				context.fill();
+				context.closePath();
+
+				
 			}
 			// drawOuterLine();
-
 
 			var image = new Image();
 			image.src = "images/e0499.png";
@@ -312,7 +337,7 @@
 
 			//start patterns to run:
 			// drawInnerCirclePattern();
-			var triggerTime = 400;
+			var triggerTime = 300;
 			setInterval(drawInnerCirclePattern,triggerTime);
 			// centerCircleFillerPattern();
 			setInterval(centerCircleFillerPattern,triggerTime);

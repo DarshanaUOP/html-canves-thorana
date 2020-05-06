@@ -14,20 +14,31 @@
 		
 		<div class="media">
 		  <img src="images/Untitled-2.png" class="mr-3" alt="..." style="width: 30%">
-		  <div class="media-body"><audio id="theAudio" src="images/ASEMATUWANA.MP3" controls></audio>
+		  <div class="media-body">
+		  	<audio id="theAudio" src="images/ASEMATUWANA.MP3" controls></audio>
 		    <h5 class="mt-0"><b>රේවතී ප්‍රේතවස්තුව</b></h5>
 				<div id="description">
 		    		පේරාදෙණිය විශ්වවිද්යලිය ඉංජිනේරු....
 		    	</div>
 		  </div>
 		</div>
+		<br>
+		<h3>අදහස් (Comments)</h3>
+		<div class="media">
+		  <div class="media-body">
+		    <h5 class="mt-0">Darshana Ariyarathna</h5>
+		    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+		  </div>
+		</div>
+		<br>
+		<h3>ඔබේ අදහස එක් කරන්න</h3>
 		<form>
 		  <div class="form-group">
-		    <label for="exampleFormControlInput1">ඔබේ නම</label>
+		    <label for="exampleFormControlInput1">ඔබේ නම (Your name)</label>
 		    <input type="name" class="form-control" id="userName" placeholder="ඔබේ නම ">
 		  </div>
 		  <div class="form-group">
-		    <label for="exampleFormControlTextarea1">ඔබේ අදහස </label>
+		    <label for="exampleFormControlTextarea1">ඔබේ අදහස (Your Comment) </label>
 		    <textarea class="form-control" id="comment" rows="3"></textarea>
 		  </div>
 		  <button type="submit" class="btn btn-primary">Submit</button>
@@ -119,7 +130,18 @@
 
 			// get context of the canvas
 			context = myCanvas.getContext("2d");
-			
+			// draw background
+			// var moon = new Image();
+			// moon.src = "images/moon.png";
+			// moon.addEventListener('load',function(){
+			// 	context.drawImage(moon,5,5,200,200);
+			// });
+			// var clouds = new Image();
+			// clouds.src = "images/clouds.png";
+			// clouds.addEventListener('load',function(){
+			// 	context.drawImage(clouds,100,5,400,150);
+			// });
+
 			// draw square
 			context.beginPath();
 			context.strokeStyle = "rgba(255,255,255,1)";
@@ -419,7 +441,7 @@
 							x1 = cx[0] + R*(1 + fr*i4)*Math.sin(newAngle);
 							y1 = cy[0] + R*(1 + fr*i4)*Math.cos(newAngle);
 							
-							context.fillStyle = "rgba("+Math.random()*255+",255,0,0.8)";
+							// context.fillStyle = "rgba("+Math.random()*255+",255,0,0.8)";
 							context.beginPath();
 							context.arc(x1,y1,dotSizeMedium,Math.PI*2,false);
 							context.fill();
@@ -455,6 +477,8 @@
 				context.drawImage(imageCenter,(cx[0] - R*Math.sin(Math.PI/6) + 0.005*w),cy[0],dim,dim);
 				
 			});
+
+			
 
 			//start patterns to run:
 			// drawInnerCirclePattern();

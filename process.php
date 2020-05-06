@@ -2,6 +2,8 @@
 	//set time zone
 	date_default_timezone_set("Asia/Colombo");
 	$dateAndTime = date('Y-m-d h:i:sa');
+	$ipAddress = $_SERVER['REMOTE_ADDR'];
+    $browser = $_SERVER['HTTP_USER_AGENT'];
 
  	$sendObj = new \stdClass();
 	if (isset($_POST['name']) && $_POST['comment']) {
@@ -14,7 +16,9 @@
 		   $formdata = array(
 		      'name'=> $_POST['name'],
 		      'comment'=> $_POST['comment'],
-		      'date' =>$dateAndTime
+		      'date' =>$dateAndTime,
+		      'ip' => $ipAddress,
+		      'browser' => $browser
 		   );
 
 		   //Get data from existing json file

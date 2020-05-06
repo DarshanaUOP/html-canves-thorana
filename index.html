@@ -17,10 +17,10 @@
 		<div class="media">
 		  <img src="images/Untitled-2.png" class="mr-3" alt="..." style="width: 30%">
 		  <div class="media-body">
-		  	<audio id="theAudio" src="images/Torana_full_Mixdown_2.mp3" controls></audio>
+		  	<audio autoplay="true" id="theAudio" src="images/Torana_full_Mixdown_2.mp3" controls></audio>
 
 		  	<div class="btn-group" role="group" aria-label="Basic example">
-			  <button type="button" class="btn btn-secondary" id="skip0" onclick="setTimerAudio(this)">තොරණ විස්තරය මුල සිට </button>
+			  <button type="button" class="btn btn-secondary" id="skip0" onclick="setTimerAudio(this)">තොරණ විස්තරය මුල සිට අසන්න</button>
 			  <button type="button" class="btn btn-secondary" id="skip1" onclick="setTimerAudio(this)">1</button>
 			  <button type="button" class="btn btn-secondary" id="skip2" onclick="setTimerAudio(this)">2</button>
 			  <button type="button" class="btn btn-secondary" id="skip3" onclick="setTimerAudio(this)">3</button>
@@ -114,8 +114,12 @@
 		function setTimerAudio(elementId){
 			var elementId = elementId;
 			var timesmapID = elementId.id.split('skip')[1];
-			
+			audioElement.pause();
 			audioElement.currentTime = times[timesmapID];
+			setTimeout(function(){
+				audioElement.play();	
+			} ,500);
+
 		}
 
 		var myCanvas;

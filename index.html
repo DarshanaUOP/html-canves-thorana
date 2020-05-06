@@ -131,11 +131,11 @@
 			leftImageBoxH = dimPointSqy - 2*imageBoxPadding;
 			leftImageBoxW = R +3*r - r*Math.sin(angleBC) - 2*imageBoxPadding;
 
-			var imageBoxLeft = new Image();
-			imageBoxLeft.src = "images/data5.jpg";
-			imageBoxLeft.addEventListener('load',function(){
-				context.drawImage(imageBoxLeft,leftImgBoxStartX,leftImgBoxStartY,leftImageBoxW,leftImageBoxH);		
-			});
+			// var imageBoxLeft = new Image();
+			// imageBoxLeft.src = "images/data5.jpg";
+			// imageBoxLeft.addEventListener('load',function(){
+			// 	context.drawImage(imageBoxLeft,leftImgBoxStartX,leftImgBoxStartY,leftImageBoxW,leftImageBoxH);		
+			// });
 
 			// create right image box
 			rightImgBoxStartX = cx[0] + r*Math.sin(angleBC) + imageBoxPadding;
@@ -143,11 +143,11 @@
 			rightImgBoxH = leftImageBoxH ;//- 2*imageBoxPadding already added;
 			rightImgBoxW = leftImageBoxW ;//- 2*imageBoxPadding already added;
 
-			var imageBoxRight = new Image();
+/*			var imageBoxRight = new Image();
 			imageBoxRight.src = "images/data5.jpg";
 			imageBoxRight.addEventListener('load',function(){
 				context.drawImage(imageBoxRight,rightImgBoxStartX,rightImgBoxStartY,rightImgBoxW,rightImgBoxH);		
-			});
+			});*/
 
 			//create lower image box
 			var downImage = new Image();

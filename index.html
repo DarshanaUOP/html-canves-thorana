@@ -13,7 +13,7 @@
 		<div class="row">
 		</div>
 
-		<div class="row" style="display: none;">
+		<div class="row" style="display: block;">
 			<div class="col-sm-6">
 				<img src="images/candvas.png" class="img-fluid img-thumbnail" alt="">
 				<audio id="theAudio" src="images/ASEMATUWANA.MP3" controls></audio>
@@ -232,7 +232,7 @@
 			// center circle filler patern
 			var numberOfDotsEach = {
 				// line:[6,12,18,12,30,]
-				line: [12,24,30,24,48]
+				line: [12,18,30,30,48]
 			}
 			var centerCircleFillerPattern = function(){
 				for(var i4 = 0;i4<5 ;i4++){
@@ -374,7 +374,29 @@
 				}
 				
 			}
-			// drawOuterLine();
+		
+			//draw fill triangle between circles
+			var filTriangle = function(){
+				// var i=1;
+				fr = 0.05;
+				var frd = 1+fr;
+				var plotAngle;
+				for (var i = 1; i < cx.length - 2; i++) {
+					for (var i4 = -3; i4 < 3; i4++) {
+						// console.log(i4);
+						pointX = cx[0] + R*(1 + 0.1*i4)*Math.sin(plotAngle);
+						pointY = cy[0] + R*(1 + 0.1*i4)*Math.cos(plotAngle);
+
+						plotAngle = (1 + 2*i)*Math.PI/8;
+						context.fillStyle = "rgba(0,"+Math.random()*255+",255,0.8)";
+						context.beginPath();
+						context.arc(pointX,pointY,dotSize,Math.PI*2,false);
+						context.fill();
+						context.closePath();
+					}				
+				}
+			}
+			// filTriangle();
 
 			var image = new Image();
 			image.src = "images/e0499.png";
@@ -402,6 +424,8 @@
 			setInterval(centerCircleFlowerPattern,triggerTime/2);
 			// drawOuterLine()
 			setInterval(drawOuterLine,triggerTime);
+			//filTriangle()
+			setInterval(filTriangle,triggerTime);
 		}
 	</script>
 

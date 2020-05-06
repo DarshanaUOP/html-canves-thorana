@@ -3,16 +3,30 @@
 <head>
 	<title>Thorana</title>
 	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
 	<canvas style="background: rgba(0,0,0,0.9);width: 100%;height: 100%" id="myCanvas">
 		Your browser not supported. please try with a different device.
 	</canvas>
-	<audio id="theAudio" src="images/ASEMATUWANA.MP3" controls></audio>
+	<div class="container">
+		<div class="row">
+			<audio id="theAudio" src="images/ASEMATUWANA.MP3" controls></audio>
+		</div>
 
+		<div class="row">
+			<div class="col-md-auto">
+				<img src="images/candvas.png" class="img-fluid img-thumbnail" alt="">
+			</div>
+			<div class="col" >Description සිංහල <br> with events</div>
+		</div>
+	</div>
 	<script>
 
-		// var audioElement = document.getElementById("theAudio");
+		var audioElement = document.getElementById("theAudio");
+			audioElement.ontimeupdate = function(){
+				// console.log(audioElement.currentTime);
+			}
 		// audioElement.play();
 		// audioElement.setAttribute('style','display:none');
 
@@ -392,5 +406,6 @@
 			setInterval(drawOuterLine,triggerTime);
 		}
 	</script>
+
 </body>
 </html>

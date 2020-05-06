@@ -5,6 +5,8 @@
 	<meta charset="utf-8">
 	<link rel="icon" type="image/x-icon" href="images/logo.ico" sizes="16x16">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 </head>
 <body>
 	<canvas style="background: rgba(0,0,0,0.9);width: 100%;height: 100%" id="myCanvas">
@@ -15,20 +17,19 @@
 		<div class="media">
 		  <img src="images/Untitled-2.png" class="mr-3" alt="..." style="width: 30%">
 		  <div class="media-body">
-		  	<audio id="theAudio" src="images/ASEMATUWANA.MP3" controls></audio>
+		  	<audio id="theAudio" src="images/Torana_full_Mixdown_2.mp3" controls></audio>
 
 		  	<div class="btn-group" role="group" aria-label="Basic example">
-			  <button type="button" class="btn btn-secondary" id="skip0">තොරණ විස්තරය මුල සිට </button>
-			  <button type="button" class="btn btn-secondary" id="skip1">1</button>
-			  <button type="button" class="btn btn-secondary" id="skip2">2</button>
-			  <button type="button" class="btn btn-secondary" id="skip3">3</button>
-			  <button type="button" class="btn btn-secondary" id="skip4">4</button>
-			  <button type="button" class="btn btn-secondary" id="skip5">5</button>
-			  <button type="button" class="btn btn-secondary" id="skip6">6</button>
-			  <button type="button" class="btn btn-secondary" id="skip7">7</button>
-			  <button type="button" class="btn btn-secondary" id="skip8">8</button>
-			  <button type="button" class="btn btn-secondary" id="skip9">තොරණ විස්තරය අවසානය</button>
-
+			  <button type="button" class="btn btn-secondary" id="skip0" onclick="setTimerAudio(this)">තොරණ විස්තරය මුල සිට </button>
+			  <button type="button" class="btn btn-secondary" id="skip1" onclick="setTimerAudio(this)">1</button>
+			  <button type="button" class="btn btn-secondary" id="skip2" onclick="setTimerAudio(this)">2</button>
+			  <button type="button" class="btn btn-secondary" id="skip3" onclick="setTimerAudio(this)">3</button>
+			  <button type="button" class="btn btn-secondary" id="skip4" onclick="setTimerAudio(this)">4</button>
+			  <button type="button" class="btn btn-secondary" id="skip5" onclick="setTimerAudio(this)">5</button>
+			  <button type="button" class="btn btn-secondary" id="skip6" onclick="setTimerAudio(this)">6</button>
+			  <button type="button" class="btn btn-secondary" id="skip7" onclick="setTimerAudio(this)">7</button>
+			  <button type="button" class="btn btn-secondary" id="skip8" onclick="setTimerAudio(this)">8</button>
+			  <button type="button" class="btn btn-secondary" id="skip9" onclick="setTimerAudio(this)">තොරණ විස්තරය අවසානය</button>
 			</div>
 
 		    <h5 class="mt-0"><b>රේවතී ප්‍රේතවස්තුව</b></h5>
@@ -63,7 +64,6 @@
 		<script>
 			var userName = document.getElementById("userName");
 			var userComment = document.getElementById("userComment");
-			console.log(userComment);
 
 			var yourName,yourComment;
 			document.getElementById("commSub").addEventListener("click", function(event){
@@ -90,24 +90,33 @@
 				request.setRequestHeader('Cache-Control','no-cache');
 				request.send(data);
 			});	
-		</script>
 
+
+		</script>
 	</div>
 	<script>
 		var description = document.getElementById('description');
 		var audioElement = document.getElementById("theAudio");
 		var currentTime;//audioElement.currentTime;
-			audioElement.ontimeupdate = function(){
-				currentTime = audioElement.currentTime;
-				if (currentTime>5 ) {
-					description.innerHTML = "sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>";
-				}else{
-					description.innerHTML = "ආරම්භය";
-				}
-				// console.log();
+		audioElement.ontimeupdate = function(){
+			currentTime = audioElement.currentTime;
+			if (currentTime>5 ) {
+				description.innerHTML = "sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>";
+			}else{
+				description.innerHTML = "ආරම්භය";
 			}
-		// audioElement.play();
+			// console.log();
+		}
+		audioElement.play();
 		// audioElement.setAttribute('style','display:none');
+		var times = [0,10,20,30,40,50,60,70,80,90];
+
+		function setTimerAudio(elementId){
+			var elementId = elementId;
+			var timesmapID = elementId.id.split('skip')[1];
+			
+			audioElement.currentTime = times[timesmapID];
+		}
 
 		var myCanvas;
 		var canvasWidth,canvasHeight;

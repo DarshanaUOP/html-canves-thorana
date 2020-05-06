@@ -18,16 +18,16 @@
 		  	<audio id="theAudio" src="images/ASEMATUWANA.MP3" controls></audio>
 
 		  	<div class="btn-group" role="group" aria-label="Basic example">
-			  <button type="button" class="btn btn-secondary">තොරණ විස්තරය මුල සිට </button>
-			  <button type="button" class="btn btn-secondary">1</button>
-			  <button type="button" class="btn btn-secondary">2</button>
-			  <button type="button" class="btn btn-secondary">3</button>
-			  <button type="button" class="btn btn-secondary">4</button>
-			  <button type="button" class="btn btn-secondary">5</button>
-			  <button type="button" class="btn btn-secondary">6</button>
-			  <button type="button" class="btn btn-secondary">7</button>
-			  <button type="button" class="btn btn-secondary">8</button>
-			  <button type="button" class="btn btn-secondary">තොරණ විස්තරය අවසානය</button>
+			  <button type="button" class="btn btn-secondary" id="skip0">තොරණ විස්තරය මුල සිට </button>
+			  <button type="button" class="btn btn-secondary" id="skip1">1</button>
+			  <button type="button" class="btn btn-secondary" id="skip2">2</button>
+			  <button type="button" class="btn btn-secondary" id="skip3">3</button>
+			  <button type="button" class="btn btn-secondary" id="skip4">4</button>
+			  <button type="button" class="btn btn-secondary" id="skip5">5</button>
+			  <button type="button" class="btn btn-secondary" id="skip6">6</button>
+			  <button type="button" class="btn btn-secondary" id="skip7">7</button>
+			  <button type="button" class="btn btn-secondary" id="skip8">8</button>
+			  <button type="button" class="btn btn-secondary" id="skip9">තොරණ විස්තරය අවසානය</button>
 
 			</div>
 
@@ -41,8 +41,11 @@
 		<h3><b>අදහස් (Comments)</b></h3>
 		<div class="media">
 		  <div class="media-body">
-		    <h5 class="mt-0">Darshana Ariyarathna</h5>
-		    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+		    <h4 class="mt-0" id="commenterName">User</h4>
+		    <h6 id="commentDate">Date</h6>
+		    <h6 id="comment">
+		    	comment
+		    </h6>
 		  </div>
 		</div>
 		<br>
@@ -56,7 +59,7 @@
 		    <label for="exampleFormControlTextarea1">ඔබේ අදහස (Your Comment) </label>
 		    <textarea class="form-control" id="comment" rows="3"></textarea>
 		  </div>
-		  <button type="submit" class="btn btn-primary">Submit</button>
+		  <button type="submit" class="btn btn-primary" id="commSub">Submit</button>
 		</form>
 	</div>
 	<script>

@@ -3,6 +3,7 @@
 <head>
 	<title>Thorana</title>
 	<meta charset="utf-8">
+	<link rel="icon" type="image/x-icon" href="images/logo.ico" sizes="16x16">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
@@ -247,7 +248,7 @@
 							var dotY = cy[0] + localR * Math.sin(2*Math.PI/numberOfDotsEach.line[i4]*i3);
 
 							context.beginPath();
-							context.fillStyle = "rgba(0,"+255*intensity2+",0,0.6)";
+							context.fillStyle = "rgba(10,"+255*intensity2+","+Math.random()*200+",0.6)";
 
 							context.arc(dotX,dotY,flowerCenterDotSize*0.75,2*Math.PI,false);
 							context.fill();
@@ -262,6 +263,7 @@
 			// small circles inner Bulb animations set
 			var intensity = 0.9 ;	
 			var dotSize = 0.003*w;
+			var dotSizeMedium = 0.75*dotSize;
 			var dotsForSmallCircle = {
 				numberOfDots : [12,24,36],
 				radii : [0.7,0.8,0.9]
@@ -378,19 +380,19 @@
 			//draw fill triangle between circles
 			var filTriangle = function(){
 				// var i=1;
-				fr = 0.05;
-				var frd = 1+fr;
+				fr = 0.1;
+				// var frd = 1+fr;
 				var plotAngle;
 				for (var i = 1; i < cx.length - 2; i++) {
 					for (var i4 = -3; i4 < 3; i4++) {
 						// console.log(i4);
-						pointX = cx[0] + R*(1 + 0.1*i4)*Math.sin(plotAngle);
-						pointY = cy[0] + R*(1 + 0.1*i4)*Math.cos(plotAngle);
+						pointX = cx[0] + R*(1 + fr*i4)*Math.sin(plotAngle);
+						pointY = cy[0] + R*(1 + fr*i4)*Math.cos(plotAngle);
 
 						plotAngle = (1 + 2*i)*Math.PI/8;
 						context.fillStyle = "rgba(0,"+Math.random()*255+",255,0.8)";
 						context.beginPath();
-						context.arc(pointX,pointY,dotSize,Math.PI*2,false);
+						context.arc(pointX,pointY,dotSizeMedium,Math.PI*2,false);
 						context.fill();
 						context.closePath();
 					}				

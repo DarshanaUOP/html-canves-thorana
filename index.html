@@ -149,6 +149,12 @@
 				context.drawImage(imageBoxRight,rightImgBoxStartX,rightImgBoxStartY,rightImgBoxW,rightImgBoxH);		
 			});
 
+			//create lower image box
+			var downImage = new Image();
+			downImage.src = "images/thorana.png";
+			downImage.addEventListener('load',function(){
+				context.drawImage(downImage,leftImgBoxStartX,leftImgBoxStartY,R*2+6*r-imageBoxPadding*2,rightImgBoxH);
+			});
 
 			for(var i = 0; i <= cx.length ; i++){
 				//draw outer circle of each circles
@@ -405,7 +411,7 @@
 							x1 = cx[0] + R*(1 + fr*i4)*Math.sin(newAngle);
 							y1 = cy[0] + R*(1 + fr*i4)*Math.cos(newAngle);
 							
-							context.fillStyle = "rgba("+Math.random()*255+",0,255,0.8)";
+							context.fillStyle = "rgba("+Math.random()*255+",255,0,0.8)";
 							context.beginPath();
 							context.arc(x1,y1,dotSizeMedium,Math.PI*2,false);
 							context.fill();
@@ -415,7 +421,7 @@
 
 							x2 = cx[0] + R*(1 + fr*i4)*Math.sin(newAngle);
 							y2 = cy[0] + R*(1 + fr*i4)*Math.cos(newAngle);
-							context.fillStyle = "rgba("+Math.random()*255+",255,0,0.8)";
+							// context.fillStyle = "rgba("+Math.random()*255+",255,0,0.8)";
 							context.beginPath();
 							context.arc(x2,y2,dotSizeMedium,Math.PI*2,false);
 							context.fill();

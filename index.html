@@ -75,7 +75,21 @@
 				yourName = userName.value;
 				yourComment = userComment.value;
 
+				var data = new FormData();
+				data.append('name',yourName);
+				data.append('comment',yourComment);
+				
+				var request = new XMLHttpRequest();
+				request.addEventListener('readystatechange',function(event){
+					if (this.readyState == 4) {
+						if (this.status == 200) {
 
+						}
+					}
+				});
+				request.open('POST','process.php');
+				request.setRequestHeader('Cache-Control','no-cache');
+				request.send(data);
 			});	
 		</script>
 

@@ -1,7 +1,10 @@
 <?php 
+	//set time zone
+	date_default_timezone_set("Asia/Colombo");
+	
  	$sendObj = new \stdClass();
 	if (isset($_POST['name']) && $_POST['comment']) {
-		$sendObj->massage = "Done";
+		
 
 	   $myFile = "comments.json";
 	   $arr_data = array(); // create empty array
@@ -28,17 +31,26 @@
 		   
 		   //write json data into data.json file
 		   if(file_put_contents($myFile, $jsondata)) {
-		        echo 'Data successfully saved';
+		        $sendObj->massage = "Done";
+		        $sendObj->user = $_POST['name'];
+		        $sendObj->comment = $_POST['comment'];
 		    }
 		   else 
-		        echo "error";
+		        // echo "error";
+		    $sendObj->massage = "Error";
+			$sendObj->cause = "Unable to save data on server";
 
 	   }
 	   catch (Exception $e) {
-	            echo 'Caught exception: ',  $e->getMessage(), "\n";
+		    $sendObj->massage = "Error";
+			$sendObj->cause = "Exception occured " . $e->getMessage();
+
+            // echo 'Caught exception: ',  $e->getMessage(), "\n";
 	   }		
 	}else{
 		$sendObj->massage = "Error";
+		$sendObj->cause = "no necessary data";
+
 	}
 	
  ?>

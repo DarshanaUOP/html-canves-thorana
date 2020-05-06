@@ -11,21 +11,31 @@
 	</canvas>
 	<div class="container">
 		<div class="row">
-			<audio id="theAudio" src="images/ASEMATUWANA.MP3" controls></audio>
 		</div>
 
-		<div class="row">
-			<div class="col-md-auto">
+		<div class="row" style="display: none;">
+			<div class="col-sm-6">
 				<img src="images/candvas.png" class="img-fluid img-thumbnail" alt="">
+				<audio id="theAudio" src="images/ASEMATUWANA.MP3" controls></audio>
 			</div>
-			<div class="col" >Description සිංහල <br> with events</div>
+			<div class="col" >
+				<div id="description">
+					Description සිංහල <br> with events</div>
+				</div>
 		</div>
 	</div>
 	<script>
-
+		var description = document.getElementById('description');
 		var audioElement = document.getElementById("theAudio");
+		var currentTime;//audioElement.currentTime;
 			audioElement.ontimeupdate = function(){
-				// console.log(audioElement.currentTime);
+				currentTime = audioElement.currentTime;
+				if (currentTime>5 ) {
+					description.innerHTML = "sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>";
+				}else{
+					description.innerHTML = "ආරම්භය";
+				}
+				// console.log();
 			}
 		// audioElement.play();
 		// audioElement.setAttribute('style','display:none');
@@ -221,7 +231,8 @@
 			
 			// center circle filler patern
 			var numberOfDotsEach = {
-				line:[6,12,18,12,30,]
+				// line:[6,12,18,12,30,]
+				line: [12,24,30,24,48]
 			}
 			var centerCircleFillerPattern = function(){
 				for(var i4 = 0;i4<5 ;i4++){

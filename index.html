@@ -383,6 +383,10 @@
 				fr = 0.1;
 				// var frd = 1+fr;
 				var plotAngle;
+				// var r2 = 4*dotSizeMedium;
+				var x1,y1,newAngle;
+				var dotNumbers = [2,2,3,4,2,1];
+
 				for (var i = 1; i < cx.length - 2; i++) {
 					for (var i4 = -3; i4 < 3; i4++) {
 						// console.log(i4);
@@ -395,6 +399,28 @@
 						context.arc(pointX,pointY,dotSizeMedium,Math.PI*2,false);
 						context.fill();
 						context.closePath();
+
+						for(var k=0;k<dotNumbers[i4+3];k++){
+							newAngle = plotAngle + k*Math.PI/36; // -> 180/36 = 5 degree. 
+							x1 = cx[0] + R*(1 + fr*i4)*Math.sin(newAngle);
+							y1 = cy[0] + R*(1 + fr*i4)*Math.cos(newAngle);
+							
+							context.fillStyle = "rgba("+Math.random()*255+",0,255,0.8)";
+							context.beginPath();
+							context.arc(x1,y1,dotSizeMedium,Math.PI*2,false);
+							context.fill();
+							context.closePath();							
+							
+							newAngle = plotAngle - k*Math.PI/36; // -> 180/36 = 5 degree.
+
+							x2 = cx[0] + R*(1 + fr*i4)*Math.sin(newAngle);
+							y2 = cy[0] + R*(1 + fr*i4)*Math.cos(newAngle);
+							context.fillStyle = "rgba("+Math.random()*255+",255,0,0.8)";
+							context.beginPath();
+							context.arc(x2,y2,dotSizeMedium,Math.PI*2,false);
+							context.fill();
+							context.closePath();							
+						}
 					}				
 				}
 			}

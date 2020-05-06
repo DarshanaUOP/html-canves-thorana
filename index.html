@@ -83,7 +83,8 @@
 				request.addEventListener('readystatechange',function(event){
 					if (this.readyState == 4) {
 						if (this.status == 200) {
-
+							var response = this.response;
+							console.log(response);
 						}
 					}
 				});

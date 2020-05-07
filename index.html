@@ -94,6 +94,7 @@
 		</div>
 		<br>
 		<h3><b>අදහස් (Comments)</b></h3>
+		
 		<div class="media" id="mediaviewer">
 		  <div class="media-body">
 		    <h4 class="mt-0" id="commenterName">මේ දක්වා කිසිවෙකු අදහසක් දක්වා නැත.(No one has commented so far.)</h4>
@@ -101,8 +102,20 @@
 		    <h6 id="comment"></h6>
 		  </div>
 		</div>
+		
 		<br>
+
 		<h3><b>ඔබේ අදහස එක් කරන්න</b></h3>
+		<ul class="list-unstyled" id="newCommViwer">
+		  <!-- <li class="media" >
+		    <img src="..." class="mr-3" alt="...">
+		    <div class="media-body" style="border: 1px solid">
+		      <h5 class="mt-0 mb-1">List-based media object</h5>
+		      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+		    </div> -->
+		  </li>
+		</ul>
+
 		<form>
 		  <div class="form-group">
 		    <label for="exampleFormControlInput1">ඔබේ නම (Your name)</label>
@@ -136,7 +149,46 @@
 					if (this.readyState == 4) {
 						if (this.status == 200) {
 							var response = this.response;
-							
+							// console.log(response);
+							var obj = JSON.parse(response);
+
+							if (obj.massage == 'Error') {
+								alert(obj.cause);
+							}else if (obj.massage == 'Done') {
+								var user = obj.user;
+								var comment = obj.comment;
+								var dateOfComment = obj.date;
+
+								var mediaviewer = document.getElementById('newCommViwer');
+								var newCommList, newCommHolder,newCommUser,newComm,newComDate;
+								
+								newCommList = document.createElement('li');
+								newCommHolder = document.createElement('div');
+								newCommUser = document.createElement('h4');
+								newComm = document.createElement('h6');
+								newComDate = document.createElement('h6');
+
+								newCommHolder.setAttribute('class','media-body');
+								// newCommHolder.setAttribute('style','border: 1px solid');
+								newCommUser.setAttribute('class','mt-0');
+								// newComm.setAttribute('class','');
+								// newCommDate.setAttribute('class','');
+								newCommUser.innerHTML = user;
+								newComDate.innerHTML = dateOfComment;
+								newComm.innerHTML = comment;
+
+								newCommHolder.appendChild(newCommUser);
+								newCommHolder.appendChild(newComDate);
+								newCommHolder.appendChild(newComm);
+
+								newCommList.appendChild(newCommHolder);
+
+								mediaviewer.appendChild(newCommList);
+
+								userName.value = '';
+								userComment.value = '';
+
+							}
 
 						}
 					}

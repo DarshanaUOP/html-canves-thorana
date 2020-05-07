@@ -41,10 +41,12 @@
 			        $sendObj->comment = $_POST['comment'];
 			        $sendObj->date = $dateAndTime;
 			    }
-			   else 
-			        // echo "error";
-			    $sendObj->massage = "Error";
-				$sendObj->cause = "Unable to save data on server";
+			   else{
+				        // echo "error";
+				    $sendObj->massage = "Error";
+					$sendObj->cause = "Unable to save data on server";
+			   	
+			   } 
 
 		   }
 		   catch (Exception $e) {

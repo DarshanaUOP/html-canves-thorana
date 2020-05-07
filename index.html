@@ -17,7 +17,14 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 </head>
-<body>
+<body onload="getComm()">
+	<!-- <script>
+		$('#myModal').on('shown.bs.modal', function () {
+		  $('#myInput').trigger('focus')
+		});
+
+	</script> -->
+
 	<canvas style="background: rgba(0,0,0,0.9);width: 100%;height: 100%" id="myCanvas">
 		Your browser not supported. please try with a different device.
 	</canvas>
@@ -36,11 +43,11 @@
 
 		  <div class="media-body">
 		  	<h5  style="font-size:3vw"><b>තොරණ විස්තරය ශ්‍රවණය කරන්න</b></h5>
-		  	<audio autoplay="true" id="theAudio" src="images/Torana_full_Mixdown_2 finale.mp3" controls loop="true"  style="font-size:1vw"></audio>
+		  	<audio autoplay="true" id="theAudio" src="images/Torana_full_Mixdown_2_finale.mp3" controls loop="true"  style="font-size:1vw"></audio>
 
 		  	<div class="btn-group" role="group" aria-label="Basic example">
-			  <button type="button" class="btn btn-secondary" id="skip0" onclick="setTimerAudio(this)">තොරණ විස්තරය මුල සිට අසන්න</button>
-			  <button type="button" class="btn btn-secondary" id="skip1" onclick="setTimerAudio(this)" style="font-size:3vw">1</button>
+			  <button type="button" class="btn btn-secondary" id="skip0" onclick="setTimerAudio(this)" style="font-size:2.1vw">තොරණ විස්තරය මුල සිට ශ්‍රවණය කිරීමට මෙහි click කරන්න.</button>
+			  <button type="button" class="btn btn-secondary" id="skip1" onclick="setTimerAudio(this)">1</button>
 			  <button type="button" class="btn btn-secondary" id="skip2" onclick="setTimerAudio(this)">2</button>
 			  <button type="button" class="btn btn-secondary" id="skip3" onclick="setTimerAudio(this)">3</button>
 			  <button type="button" class="btn btn-secondary" id="skip4" onclick="setTimerAudio(this)">4</button>
@@ -99,7 +106,24 @@
 					සියක් පුරුෂයන් ගැඹුරු ඇති සංසවක නිරයේ දහසක් අවුරුදු පැසෙන්න යමපල්ලන් රේවතී ගේ දෙපයින් අල්ලා යටිකුරු කළා. ඝෝර වූ සංසවක නිරයට හෙළුවා.
 					<br>
 		    	</div>
-		    	<div id="description8"  style="display: none;"></div>
+		    	<div id="description8"  style="display: none;">
+		    		ඉධ තප්පති, පෙච්ච තප්පති <br>
+					පාපකාරී උභයත්ථ තප්පති <br>
+					පාපං මෙ කතන්ති තප්පති <br>
+					භියෙයා තප්පති දුග්ගතිං ගතො <br>
+					<br>
+					පව් කරන්නා මෙලොව දී ත් තැවේ, පරලොව දී ත් තැවේ, දෙලොව දී ම තැවේ. 
+		    	</div>
+		    	<div id="description9"  style="display: none;">
+		    		ඉධ නන්දති, පෙච්ච නන්දති <br>
+					කතපුඣ්ඣා උභයත්ථ නන්දති <br>
+					පුඣ්ඣං මෙ කතන්ති නන්දති <br>
+					භියෙයා නන්දති සුග්ගතිං ගතො <br>
+					<br>
+					පින් කළ පුද්ගලයා මෙලොව දී ත් ප්‍රීතිමත් වෙයි, පරලොව දී ත් ප්‍රීතිමත් වෙයි, දෙලොව දී ම ප්‍රීතිමත් වෙයි. 
+		    	</div>
+
+
 		  </div>
 		</div>
 		<br>
@@ -107,9 +131,9 @@
 		
 		<div class="media" id="mediaviewer">
 		  <div class="media-body">
-		    <h4 class="mt-0" id="commenterName"  style="font-size:2vw">මේ දක්වා කිසිවෙකු අදහසක් දක්වා නැත.(No one has commented so far.)</h4>
-		    <h6 id="commentDate"  style="font-size:2vw"></h6>
-		    <h6 id="comment"  style="font-size:3vw"></h6>
+		    <h4 class="mt-0" id="commenterName" style="font-size:2vw">මේ දක්වා කිසිවෙකු අදහසක් දක්වා නැත.(No one has commented so far.)</h4>
+		    <h6 id="commentDate" style="font-size:1vw"></h6>
+		    <h6 id="comment"  style="font-size:1.5vw"></h6>
 		  </div>
 		</div>
 		
@@ -133,12 +157,14 @@
 		  </div>
 		  <div class="form-group">
 		    <label for="exampleFormControlTextarea1" style="font-size:2vw" >ඔබේ අදහස (Your Comment) </label>
-		    <textarea class="form-control" id="userComment" rows="3" required  style="font-size:2vw"> </textarea>
+		    <textarea class="form-control" id="userComment" rows="3" required  style="font-size:3vw"> </textarea>
 		  </div>
-		  <button type="submit" class="btn btn-primary" id="commSub"  style="font-size:2vw">Submit</button>
+		  <button type="submit" class="btn btn-primary" id="commSub"  style="font-size:3vw">Submit</button>
 		</form>
 
 		<script>
+			
+
 			var userName = document.getElementById("userName");
 			var userComment = document.getElementById("userComment");
 
@@ -197,7 +223,6 @@
 
 								userName.value = '';
 								userComment.value = '';
-
 							}
 
 						}
@@ -226,6 +251,7 @@
 		var description6 = document.getElementById('description6');
 		var description7 = document.getElementById('description7');
 		var description8 = document.getElementById('description8');
+		var description9 = document.getElementById('description9');
 
 		var imageHolder = document.getElementById('ImageHolder');
 		var imageHolder1 = document.getElementById('ImageHolder1');
@@ -244,20 +270,32 @@
 			if (ww<hw) {
 				//mobile device
 				description.setAttribute('style','font-size:3vw');
-				var c = confirm("තොරණ විස්තරය මෙතැන් සිට ශ්‍රවණය කරමු..!");
+				var c = confirm("පේරාදෙණිය ඉංජිනේරු පීඨ බෞද්ධ සහෝදර සංගමය මගින් ඉදිරිපත්  කරන DGITAL වෙසක් තොරණ  විස්තරය මෙතැන් සිට ශ්‍රවණය කරමු..!");
+				console.log(c);
 				if (c) {
-					audioElement.play();
+					setTimeout(function(){
+						audioElement.play();	
+					} ,1000);
 				}else{
-					audioElement.play();
+					setTimeout(function(){
+						audioElement.play();	
+					} ,1000);
 				}
 			}else{
 				// computer
-				audioElement.play();
+				setTimeout(function(){
+					var cc = confirm("පේරාදෙණිය ඉංජිනේරු පීඨ බෞද්ධ සහෝදර සංගමය මගින් ඉදිරිපත්  කරන DGITAL වෙසක් තොරණ  විස්තරය මෙතැන් සිට ශ්‍රවණය කිරීමට හා විස්තරය කියවීමට තොරණට පහලින් ඇති කොටස පරිශීලනය කරන්න.");
+					if (cc) {
+						audioElement.play();
+					}else{
+						audioElement.play();
+					}
+				},4000);
 			}
 			// alert("playing");
 		}
 		
-		var times = [0,5,87,124,170,213,243,330,423,438]; // for descriptions
+		var times = [0,5,87,124,170,213,243,330,423,460,461]; // for descriptions
 		var timesImages = [0,124,170,225,236,331,372,418,426]; // for images
 		audioElement.ontimeupdate = function(){
 			currentTime = audioElement.currentTime;
@@ -294,10 +332,13 @@
 				description.innerHTML = description7 .innerHTML;
 			}else if(currentTime >= times[8] && currentTime < times[9] ){
 				description.innerHTML = '';
-				description.innerHTML = description8 .innerHTML;
+				description.innerHTML = description8.innerHTML;
+			}else if(currentTime >= times[9] && currentTime < times[10] ){
+				description.innerHTML = '';
+				description.innerHTML = description9.innerHTML;
 			}else{
 				description.innerHTML = '';
-				description.innerHTML = description8 .innerHTML;
+				description.innerHTML = description9.innerHTML;
 
 			}
 			// change images
@@ -367,6 +408,56 @@
 
 		window.onload = function(){
 
+			var request2 = new XMLHttpRequest();
+			var data = new FormData();
+				data.append('name','yourName');
+				var nameOfCommenter,dateOfTheComment,theComment;
+				var commenterName = document.getElementById('commenterName');
+				var commentDate = document.getElementById('commentDate');
+				var comment = document.getElementById('comment');
+
+				request2.addEventListener('readystatechange',function(event){
+					if (this.readyState == 4) {
+						if (this.status == 200) {
+							var response = this.response;
+							// console.log(response);
+							var obj = JSON.parse(response);
+
+							var lengthObj = obj.length;	
+							// console.log(lengthObj);
+							commenterName.innerHTML = "අපවෙත ඔබගේ වටිනා අදහස් " +lengthObj + "ක් ලැබී ඇත.";
+							var kx = 0;
+							setInterval(function(){
+								nameOfCommenter = obj[kx].name;
+								dateOfTheComment = obj[kx].date;
+								theComment = obj[kx].comment;
+								// console.log(nameOfCommenter + ' '  + dateOfTheComment  + ' '  + theComment);
+
+								commenterName.innerHTML = '';
+								commenterName.innerHTML = nameOfCommenter;
+
+								commentDate.innerHTML = '';
+								commentDate.innerHTML = dateOfTheComment;
+
+								comment.innerHTML = '';
+								comment.innerHTML = '<i>'+theComment+'</i>';
+
+								console.log(kx);
+
+								kx++;
+								if (kx == lengthObj) {
+									kx=0;
+								}
+
+							},5000);
+
+						}
+					}
+				});
+				request2.open('POST','comm.php');
+				request2.setRequestHeader('Cache-Control','no-cache');
+				request2.send(data);
+			///
 
 			myCanvas = document.getElementById('myCanvas');
 			myCanvas.width = ww;
@@ -802,7 +893,7 @@
 			var dim = 2*R*Math.sin(Math.atan(0.5));
 			imageCenter.src = "images/budda_rupaya.png";
 			imageCenter.addEventListener('load',function(){
-				context.drawImage(imageCenter,(cx[0] - R*Math.sin(Math.PI/6) + 0.005*w),cy[0],dim,dim);
+				context.drawImage(imageCenter,(cx[0] - R*Math.sin(Math.PI/6) -w*0.00365),cy[0] - 0.019*w,dim +0.018*w,dim +0.02*w);
 				
 			});
 			
@@ -815,13 +906,13 @@
 			var makara_width = makara_height*2;
 
 			var imageMakaraleft = new Image();
-			imageMakaraleft.src = 'images/MAKARA_right.png';
+			imageMakaraleft.src = 'images/MAKARA_left.png';
 			imageMakaraleft.addEventListener('load',function(){
 				context.drawImage(imageMakaraleft,pointSqx - makara_width,pointSqy,makara_width,makara_height);
 			});
 
 			var imageMakaraRight = new Image();
-			imageMakaraRight.src = 'images/MAKARA_left.png';
+			imageMakaraRight.src = 'images/MAKARA_right.png';
 			imageMakaraRight.addEventListener('load',function(){
 				context.drawImage(imageMakaraRight,pointSqx + dimPointSqx,pointSqy,makara_width,makara_height);
 			});

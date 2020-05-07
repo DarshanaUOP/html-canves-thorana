@@ -35,7 +35,8 @@
 			<img src="images/a8.png" class="mr-3" alt="" style="width: 30%;display: none" id="ImageHolder8">
 
 		  <div class="media-body">
-		  	<h5>තොරණ විස්තරය ශ්‍රවණය කරන්න</h5><audio autoplay="true" id="theAudio" src="images/Torana_full_Mixdown_2.mp3" controls></audio>
+		  	<h5>තොරණ විස්තරය ශ්‍රවණය කරන්න</h5>
+		  	<audio autoplay="true" id="theAudio" src="images/Torana_full_Mixdown_2.mp3" controls loop="true"></audio>
 
 		  	<div class="btn-group" role="group" aria-label="Basic example">
 			  <button type="button" class="btn btn-secondary" id="skip0" onclick="setTimerAudio(this)">තොරණ විස්තරය මුල සිට අසන්න</button>
@@ -179,8 +180,6 @@
 								newComm = document.createElement('h6');
 								newComDate = document.createElement('h6');
 
-								
-
 								newCommHolder.setAttribute('class','media-body');
 								newCommHolder.setAttribute('style','border-left: 2px solid #F9B500;padding-left: 10px');
 								newCommUser.setAttribute('class','mt-0');
@@ -245,7 +244,7 @@
 		}
 		
 		var times = [0,5,87,124,170,213,243,330,423,438]; // for descriptions
-		var timesImages = [0,124,170,225,236,331,372,418]; // for images
+		var timesImages = [0,124,170,225,236,331,372,418,426]; // for images
 		audioElement.ontimeupdate = function(){
 			currentTime = audioElement.currentTime;
 			if(currentTime >= times[0] && currentTime < times[1]) {
@@ -312,7 +311,10 @@
 			}else if (currentTime >= timesImages[7] && currentTime<timesImages[8] ) {
 				imageHolder.setAttribute('src',imageHolder8.src);  
 				
-			}else if (currentTime >= timesImages[8]  ) {
+			}else if (currentTime >= timesImages[8]  && currentTime<timesImages[9]) {
+				imageHolder.setAttribute('src',imageHolder8.src);  
+				
+			}else{
 				imageHolder.setAttribute('src',imageHolder8.src);  
 				
 			}

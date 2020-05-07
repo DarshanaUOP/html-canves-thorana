@@ -24,14 +24,15 @@
 	<div class="container">		
 		
 		<div class="media">
-		  <img src="images/a1.png" class="mr-3" alt="" style="width: 30%;display: none" id="Image1">
-		  <img src="images/a2.png" class="mr-3" alt="" style="width: 30%;display: none" id="Image2" >
-		  <img src="images/a3.png" class="mr-3" alt="" style="width: 30%;display: none" id="Image3">
-		  <img src="images/a4.png" class="mr-3" alt="" style="width: 30%;display: none" id="Image4">
-		  <img src="images/a5.png" class="mr-3" alt="" style="width: 30%;display: none" id="Image5">
-		  <img src="images/a6.png" class="mr-3" alt="" style="width: 30%;display: none" id="Image6">
-		  <img src="images/a7.png" class="mr-3" alt="" style="width: 30%;display: none" id="Image7">
-		  <img src="images/a8.png" class="mr-3" alt="" style="width: 30%;display: none" id="Image8">
+			<img src="images/a1.png" class="mr-3" id="ImageHolder" style="width: 30%;display: block;" >
+			<img src="images/a1.png" class="mr-3" alt="" style="width: 30%;display: none" id="ImageHolder1">
+			<img src="images/a2.png" class="mr-3" alt="" style="width: 30%;display: none" id="ImageHolder2" >
+			<img src="images/a3.png" class="mr-3" alt="" style="width: 30%;display: none" id="ImageHolder3">
+			<img src="images/a4.png" class="mr-3" alt="" style="width: 30%;display: none" id="ImageHolder4">
+			<img src="images/a5.png" class="mr-3" alt="" style="width: 30%;display: none" id="ImageHolder5">
+			<img src="images/a6.png" class="mr-3" alt="" style="width: 30%;display: none" id="ImageHolder6">
+			<img src="images/a7.png" class="mr-3" alt="" style="width: 30%;display: none" id="ImageHolder7">
+			<img src="images/a8.png" class="mr-3" alt="" style="width: 30%;display: none" id="ImageHolder8">
 
 		  <div class="media-body">
 		  	<h5>තොරණ විස්තරය ශ්‍රවණය කරන්න</h5><audio autoplay="true" id="theAudio" src="images/Torana_full_Mixdown_2.mp3" controls></audio>
@@ -225,14 +226,15 @@
 		var description7 = document.getElementById('description7');
 		var description8 = document.getElementById('description8');
 
-		var image1 = document.getElementById('Image1');
-		var image2 = document.getElementById('Image2');
-		var image3 = document.getElementById('Image3');
-		var image4 = document.getElementById('Image4');
-		var image5 = document.getElementById('Image5');
-		var image6 = document.getElementById('Image6');
-		var image7 = document.getElementById('Image7');
-		var image8 = document.getElementById('Image8');
+		var imageHolder = document.getElementById('ImageHolder');
+		var imageHolder1 = document.getElementById('ImageHolder1');
+		var imageHolder2 = document.getElementById('ImageHolder2');
+		var imageHolder3 = document.getElementById('ImageHolder3');
+		var imageHolder4 = document.getElementById('ImageHolder4');
+		var imageHolder5 = document.getElementById('ImageHolder5');
+		var imageHolder6 = document.getElementById('ImageHolder6');
+		var imageHolder7 = document.getElementById('ImageHolder7');
+		var imageHolder8 = document.getElementById('ImageHolder8');
 
 		var audioElement = document.getElementById("theAudio");
 		var currentTime;//audioElement.currentTime;
@@ -246,8 +248,6 @@
 		var timesImages = [0,124,170,225,236,331,372,418]; // for images
 		audioElement.ontimeupdate = function(){
 			currentTime = audioElement.currentTime;
-			// console.log(currentTime);
-
 			if(currentTime >= times[0] && currentTime < times[1]) {
 				description.innerHTML = '';
 				description.innerHTML = description0.innerHTML;
@@ -287,7 +287,35 @@
 				description.innerHTML = description8 .innerHTML;
 
 			}
-			// console.log();
+			// change images
+			if (currentTime >= timesImages[0] && currentTime < timesImages[1]) {
+				// imageHolder.removeAttribute('src');
+				imageHolder.setAttribute('src',imageHolder1.src);  
+			}else if (currentTime >= timesImages[1] && currentTime<timesImages[2] ) {
+				imageHolder.setAttribute('src',imageHolder2.src);  
+				
+			}else if (currentTime >= timesImages[2] && currentTime<timesImages[3] ) {
+				imageHolder.setAttribute('src',imageHolder3.src);  
+				
+			}else if (currentTime >= timesImages[3] && currentTime<timesImages[4] ) {
+				imageHolder.setAttribute('src',imageHolder4.src);  
+				
+			}else if (currentTime >= timesImages[4] && currentTime<timesImages[5] ) {
+				imageHolder.setAttribute('src',imageHolder5.src);  
+				
+			}else if (currentTime >= timesImages[5] && currentTime<timesImages[6] ) {
+				imageHolder.setAttribute('src',imageHolder6.src);  
+				
+			}else if (currentTime >= timesImages[6] && currentTime<timesImages[7] ) {
+				imageHolder.setAttribute('src',imageHolder7.src);  
+				
+			}else if (currentTime >= timesImages[7] && currentTime<timesImages[8] ) {
+				imageHolder.setAttribute('src',imageHolder8.src);  
+				
+			}else if (currentTime >= timesImages[8]  ) {
+				imageHolder.setAttribute('src',imageHolder8.src);  
+				
+			}
 		}
 		
 		// audioElement.setAttribute('style','display:none');

@@ -36,11 +36,11 @@
 
 		  <div class="media-body">
 		  	<h5  style="font-size:3vw"><b>තොරණ විස්තරය ශ්‍රවණය කරන්න</b></h5>
-		  	<audio autoplay="true" id="theAudio" src="images/Torana_full_Mixdown_2.mp3" controls loop="true"  style="font-size:1vw"></audio>
+		  	<audio autoplay="true" id="theAudio" src="images/Torana_full_Mixdown_2 finale.mp3" controls loop="true"  style="font-size:1vw"></audio>
 
 		  	<div class="btn-group" role="group" aria-label="Basic example">
 			  <button type="button" class="btn btn-secondary" id="skip0" onclick="setTimerAudio(this)">තොරණ විස්තරය මුල සිට අසන්න</button>
-			  <button type="button" class="btn btn-secondary" id="skip1" onclick="setTimerAudio(this)">1</button>
+			  <button type="button" class="btn btn-secondary" id="skip1" onclick="setTimerAudio(this)" style="font-size:3vw">1</button>
 			  <button type="button" class="btn btn-secondary" id="skip2" onclick="setTimerAudio(this)">2</button>
 			  <button type="button" class="btn btn-secondary" id="skip3" onclick="setTimerAudio(this)">3</button>
 			  <button type="button" class="btn btn-secondary" id="skip4" onclick="setTimerAudio(this)">4</button>
@@ -53,7 +53,7 @@
 
 		    <h5 class="mt-0"  style="font-size:3vw"><b>රේවතී ප්‍රේතවස්තුව</b></h5>
 		    	<div id="description" style="font-size:1.9vw"></div>
-				<div id="description0" style="display: none;font-size:5vw">
+				<div id="description0" style="display: none;">
 		    		පින්බර වෙසක් මංගල්‍යයක් වේවා ..!!<br>
 					Online වෙසක් කලාපය<br>
 					<br>
@@ -240,9 +240,10 @@
 		var audioElement = document.getElementById("theAudio");
 		var currentTime;//audioElement.currentTime;
 		
-		audioElement.canplaythrough  = function(){
+		audioElement.onloadeddata  = function(){
 			if (ww<hw) {
 				//mobile device
+				description.setAttribute('style','font-size:3vw');
 				var c = confirm("තොරණ විස්තරය මෙතැන් සිට ශ්‍රවණය කරමු..!");
 				if (c) {
 					audioElement.play();

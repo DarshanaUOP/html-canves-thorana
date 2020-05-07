@@ -87,11 +87,14 @@
 					සියක් පුරුෂයන් ගැඹුරු ඇති සංසවක නිරයේ දහසක් අවුරුදු පැසෙන්න යමපල්ලන් රේවතී ගේ දෙපයින් අල්ලා යටිකුරු කළා. ඝෝර වූ සංසවක නිරයට හෙළුවා.
 					<br>
 		    	</div>
+		    	<div id="description8"  style="display: none;"></div>
+
+
 		  </div>
 		</div>
 		<br>
 		<h3><b>අදහස් (Comments)</b></h3>
-		<div class="media">
+		<div class="media" id="mediaviewer">
 		  <div class="media-body">
 		    <h4 class="mt-0" id="commenterName">මේ දක්වා කිසිවෙකු අදහසක් දක්වා නැත.(No one has commented so far.)</h4>
 		    <h6 id="commentDate"></h6>
@@ -133,7 +136,8 @@
 					if (this.readyState == 4) {
 						if (this.status == 200) {
 							var response = this.response;
-							console.log(response);
+							
+
 						}
 					}
 				});
@@ -155,6 +159,7 @@
 		var description5 = document.getElementById('description5');
 		var description6 = document.getElementById('description6');
 		var description7 = document.getElementById('description7');
+		var description8 = document.getElementById('description8');
 
 		var audioElement = document.getElementById("theAudio");
 		var currentTime;//audioElement.currentTime;
@@ -164,41 +169,49 @@
 			// alert("playing");
 		}
 		
-		var times = [0,5,87,124,170,213,243,33,423];
+		var times = [0,5,87,124,170,213,243,330,423,438];
 		
 		audioElement.ontimeupdate = function(){
 			currentTime = audioElement.currentTime;
-			if(currentTime > times[0] && currentTime < times[1]) {
+			// console.log(currentTime);
+
+			if(currentTime >= times[0] && currentTime < times[1]) {
 				description.innerHTML = '';
 				description.innerHTML = description0.innerHTML;
 
-			}else if(currentTime > times[1] && currentTime < times[2]){
+			}else if(currentTime >= times[1] && currentTime < times[2]){
 				description.innerHTML = '';
 				description.innerHTML = description1.innerHTML;
 				
-			}else if(currentTime > times[2] && currentTime < times[3]){
+			}else if(currentTime >= times[2] && currentTime < times[3]){
 				description.innerHTML = '';
 				description.innerHTML = description2.innerHTML;
 
-			}else if(currentTime > times[3] && currentTime < times[4]){
+			}else if(currentTime >= times[3] && currentTime < times[4]){
 				description.innerHTML = '';
 				description.innerHTML = description3.innerHTML;
 
-			}else if(currentTime > times[4] && currentTime < times[5]){
+			}else if(currentTime >= times[4] && currentTime < times[5]){
 				description.innerHTML = '';
 				description.innerHTML = description4.innerHTML;
 
-			}else if(currentTime > times[5] && currentTime < times[6]){
+			}else if(currentTime >= times[5] && currentTime < times[6]){
 				description.innerHTML = '';
 				description.innerHTML = description5.innerHTML;
 
-			}else if(currentTime > times[6] && currentTime < times[7]){
+			}else if(currentTime >= times[6] && currentTime < times[7]){
 				description.innerHTML = '';
 				description.innerHTML = description6.innerHTML;
 
-			}else if(currentTime > times[7] ){
+			}else if(currentTime >= times[7] && currentTime < times[8] ){
 				description.innerHTML = '';
 				description.innerHTML = description7 .innerHTML;
+			}else if(currentTime >= times[8] && currentTime < times[9] ){
+				description.innerHTML = '';
+				description.innerHTML = description8 .innerHTML;
+			}else{
+				description.innerHTML = '';
+				description.innerHTML = description8 .innerHTML;
 
 			}
 			// console.log();
@@ -634,8 +647,28 @@
 				context.drawImage(imageCenter,(cx[0] - R*Math.sin(Math.PI/6) + 0.005*w),cy[0],dim,dim);
 				
 			});
-
 			
+			// pointSqx = cx[0] - (R + 3*r);		// starting point
+			// pointSqy = (cy[0] + r) + ((R + r)/(Math.sqrt(2)));
+			// dimPointSqx = 6*r + 2*R;			// dimensions
+			// dimPointSqy = 0.98*h - pointSqy;
+
+			var makara_height = dimPointSqy;
+			var makara_width = makara_height*2;
+
+			var imageMakaraleft = new Image();
+			imageMakaraleft.src = 'images/MAKARA_left.png';
+			imageMakaraleft.addEventListener('load',function(){
+				context.drawImage(imageMakaraleft,pointSqx - makara_width,pointSqy,makara_width,makara_height);
+			});
+
+			var imageMakaraRight = new Image();
+			imageMakaraRight.src = 'images/MAKARA_right.png';
+			imageMakaraRight.addEventListener('load',function(){
+				context.drawImage(imageMakaraRight,pointSqx + dimPointSqx,pointSqy,makara_width,makara_height);
+			});
+
+
 
 			//start patterns to run:
 			// drawInnerCirclePattern();

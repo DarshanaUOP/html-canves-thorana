@@ -40,6 +40,7 @@
 		        $sendObj->massage = "Done";
 		        $sendObj->user = $_POST['name'];
 		        $sendObj->comment = $_POST['comment'];
+		        $sendObj->date = $dateAndTime;
 		    }
 		   else 
 		        // echo "error";

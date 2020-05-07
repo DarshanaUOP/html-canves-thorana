@@ -3,6 +3,13 @@
 <head>
 	<title>Thorana</title>
 	<meta charset="utf-8">
+	<meta name="description" content="ඉංජිනේරු පීඨ බෞද්ධ සංගමය ඉදිරිපත් කරන වෙසක් තොරණ">
+	<meta property="og:title" content="ඉංජිනේරු පීඨ බෞද්ධ සංගමය ඉදිරිපත් කරන වෙසක් තොරණ">
+	<meta property="og:url" content="http://gotozero.000webhostapp.com/apptest/html-canves-thorana/">
+	<meta property="og:description" content="ඉංජිනේරු පීඨ බෞද්ධ සංගමය ඉදිරිපත් කරන වෙසක් තොරණ">
+	<meta property="og:image" content="http://gotozero.000webhostapp.com/apptest/html-canves-thorana/images/intro.jpg">
+	<meta property="og:type" content="article" />
+
 	<link rel="icon" type="image/x-icon" href="images/logo.ico" sizes="16x16">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -98,6 +105,11 @@
 		var description = document.getElementById('description');
 		var audioElement = document.getElementById("theAudio");
 		var currentTime;//audioElement.currentTime;
+		
+		audioElement.oncanplaythrough = function(){
+			audioElement.play();
+		}
+		
 		audioElement.ontimeupdate = function(){
 			currentTime = audioElement.currentTime;
 			if (currentTime>5 ) {
@@ -107,7 +119,7 @@
 			}
 			// console.log();
 		}
-		audioElement.play();
+		
 		// audioElement.setAttribute('style','display:none');
 		var times = [0,10,20,30,40,50,60,70,80,90];
 

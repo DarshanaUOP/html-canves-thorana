@@ -3,10 +3,10 @@
 <head>
 	<title>Thorana</title>
 	<meta charset="utf-8">
-	<meta name="description" content="ඉංජිනේරු පීඨ බෞද්ධ සංගමය ඉදිරිපත් කරන වෙසක් තොරණ">
-	<meta property="og:title" content="ඉංජිනේරු පීඨ බෞද්ධ සංගමය ඉදිරිපත් කරන වෙසක් තොරණ">
+	<meta name="description" content="ඉංජිනේරු පීඨ බෞද්ධ සහෝදර සංගමය මගින් ඉදිරිපත්  කරන DGITAL වෙසක් තොරණ ">
+	<meta property="og:title" content="රේවථී ප්‍රේතවස්තුව">
 	<meta property="og:url" content="http://gotozero.000webhostapp.com/apptest/html-canves-thorana/">
-	<meta property="og:description" content="ඉංජිනේරු පීඨ බෞද්ධ සංගමය ඉදිරිපත් කරන වෙසක් තොරණ">
+	<meta property="og:description" content="ඉංජිනේරු පීඨ බෞද්ධ සහෝදර සංගමය මගින් ඉදිරිපත්  කරන DGITAL වෙසක් තොරණ ">
 	<meta property="og:image" content="http://gotozero.000webhostapp.com/apptest/html-canves-thorana/images/intro.jpg">
 	<meta property="og:type" content="article" />
 
@@ -24,7 +24,7 @@
 		<div class="media">
 		  <img src="images/Untitled-2.png" class="mr-3" alt="..." style="width: 30%">
 		  <div class="media-body">
-		  	<audio autoplay="true" id="theAudio" src="images/Torana_full_Mixdown_2.mp3" controls></audio>
+		  	<h5>තොරණ විස්තරය ශ්‍රවණය කරන්න</h5><audio autoplay="true" id="theAudio" src="images/Torana_full_Mixdown_2.mp3" controls></audio>
 
 		  	<div class="btn-group" role="group" aria-label="Basic example">
 			  <button type="button" class="btn btn-secondary" id="skip0" onclick="setTimerAudio(this)">තොරණ විස්තරය මුල සිට අසන්න</button>
@@ -108,12 +108,13 @@
 		
 		audioElement.oncanplaythrough = function(){
 			audioElement.play();
+			if (audioElement.) {}
 		}
 		
 		audioElement.ontimeupdate = function(){
 			currentTime = audioElement.currentTime;
 			if (currentTime>5 ) {
-				description.innerHTML = "sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>sample text සිංහල <br>";
+				description.innerHTML = "";
 			}else{
 				description.innerHTML = "ආරම්භය";
 			}

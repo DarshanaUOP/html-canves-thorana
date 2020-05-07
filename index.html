@@ -35,8 +35,8 @@
 			<img src="images/a8.png" class="mr-3" alt="" style="width: 30%;display: none" id="ImageHolder8">
 
 		  <div class="media-body">
-		  	<h5>තොරණ විස්තරය ශ්‍රවණය කරන්න</h5>
-		  	<audio autoplay="true" id="theAudio" src="images/Torana_full_Mixdown_2.mp3" controls loop="true"></audio>
+		  	<h5  style="font-size:3vw"><b>තොරණ විස්තරය ශ්‍රවණය කරන්න</b></h5>
+		  	<audio autoplay="true" id="theAudio" src="images/Torana_full_Mixdown_2.mp3" controls loop="true"  style="font-size:1vw"></audio>
 
 		  	<div class="btn-group" role="group" aria-label="Basic example">
 			  <button type="button" class="btn btn-secondary" id="skip0" onclick="setTimerAudio(this)">තොරණ විස්තරය මුල සිට අසන්න</button>
@@ -51,9 +51,9 @@
 			  <button type="button" class="btn btn-secondary" id="skip9" onclick="setTimerAudio(this)">තොරණ විස්තරය අවසානය</button>
 			</div>
 
-		    <h5 class="mt-0"><b>රේවතී ප්‍රේතවස්තුව</b></h5>
-		    	<div id="description"></div>
-				<div id="description0" style="display: none;">
+		    <h5 class="mt-0"  style="font-size:3vw"><b>රේවතී ප්‍රේතවස්තුව</b></h5>
+		    	<div id="description" style="font-size:1.9vw"></div>
+				<div id="description0" style="display: none;font-size:5vw">
 		    		පින්බර වෙසක් මංගල්‍යයක් වේවා ..!!<br>
 					Online වෙසක් කලාපය<br>
 					<br>
@@ -100,24 +100,22 @@
 					<br>
 		    	</div>
 		    	<div id="description8"  style="display: none;"></div>
-
-
 		  </div>
 		</div>
 		<br>
-		<h3><b>අදහස් (Comments)</b></h3>
+		<h3  style="font-size:4vw"><b>අදහස් (Comments)</b></h3>
 		
 		<div class="media" id="mediaviewer">
 		  <div class="media-body">
-		    <h4 class="mt-0" id="commenterName">මේ දක්වා කිසිවෙකු අදහසක් දක්වා නැත.(No one has commented so far.)</h4>
-		    <h6 id="commentDate"></h6>
-		    <h6 id="comment"></h6>
+		    <h4 class="mt-0" id="commenterName"  style="font-size:2vw">මේ දක්වා කිසිවෙකු අදහසක් දක්වා නැත.(No one has commented so far.)</h4>
+		    <h6 id="commentDate"  style="font-size:2vw"></h6>
+		    <h6 id="comment"  style="font-size:3vw"></h6>
 		  </div>
 		</div>
 		
 		<br>
 
-		<h3><b>ඔබේ අදහස එක් කරන්න</b></h3>
+		<h3  style="font-size:3vw"><b>ඔබේ අදහස එක් කරන්න</b></h3>
 		<ul class="list-unstyled" id="newCommViwer">
 		  <!-- <li class="media" >
 		    <img src="..." class="mr-3" alt="...">
@@ -130,14 +128,14 @@
 
 		<form>
 		  <div class="form-group">
-		    <label for="exampleFormControlInput1">ඔබේ නම (Your name)</label>
-		    <input type="name" class="form-control" id="userName" placeholder="ඔබේ නම " required="true">
+		    <label for="exampleFormControlInput1"  style="font-size:2vw">ඔබේ නම (Your name)</label>
+		    <input type="name" class="form-control" id="userName" placeholder="ඔබේ නම " required="true" style="font-size:2vw">
 		  </div>
 		  <div class="form-group">
-		    <label for="exampleFormControlTextarea1">ඔබේ අදහස (Your Comment) </label>
-		    <textarea class="form-control" id="userComment" rows="3" required></textarea>
+		    <label for="exampleFormControlTextarea1" style="font-size:2vw" >ඔබේ අදහස (Your Comment) </label>
+		    <textarea class="form-control" id="userComment" rows="3" required  style="font-size:2vw"> </textarea>
 		  </div>
-		  <button type="submit" class="btn btn-primary" id="commSub">Submit</button>
+		  <button type="submit" class="btn btn-primary" id="commSub"  style="font-size:2vw">Submit</button>
 		</form>
 
 		<script>
@@ -214,6 +212,10 @@
 		</script>
 	</div>
 	<script>
+		var ww,hw;			
+		ww = window.innerWidth;
+		hw = window.innerHeight;
+		
 		var description = document.getElementById('description');
 		var description0 = document.getElementById('description0');
 		var description1 = document.getElementById('description1');
@@ -238,8 +240,19 @@
 		var audioElement = document.getElementById("theAudio");
 		var currentTime;//audioElement.currentTime;
 		
-		audioElement.onloadeddata  = function(){
-			audioElement.play();
+		audioElement.canplaythrough  = function(){
+			if (ww<hw) {
+				//mobile device
+				var c = confirm("තොරණ විස්තරය මෙතැන් සිට ශ්‍රවණය කරමු..!");
+				if (c) {
+					audioElement.play();
+				}else{
+					audioElement.play();
+				}
+			}else{
+				// computer
+				audioElement.play();
+			}
 			// alert("playing");
 		}
 		
@@ -316,7 +329,7 @@
 				
 			}else{
 				imageHolder.setAttribute('src',imageHolder8.src);  
-				
+
 			}
 		}
 		
@@ -335,7 +348,7 @@
 
 		var myCanvas;
 		var canvasWidth,canvasHeight;
-		var ww,hw;
+		
 		var w,h;
 		var context;
 		var r,R,z; //radius of circles and z = sin(pi/8)
@@ -352,8 +365,7 @@
 		var pointX,pointY;
 
 		window.onload = function(){
-			ww = window.innerWidth;
-			hw = window.innerHeight;
+
 
 			myCanvas = document.getElementById('myCanvas');
 			myCanvas.width = ww;
@@ -454,7 +466,7 @@
 
 			//create lower image box
 			var downImage = new Image();
-			downImage.src = "images/thorana.png";
+			downImage.src = "images/down.png";
 			downImage.addEventListener('load',function(){
 				context.drawImage(downImage,leftImgBoxStartX,leftImgBoxStartY,R*2+6*r-imageBoxPadding*2,rightImgBoxH);
 			});

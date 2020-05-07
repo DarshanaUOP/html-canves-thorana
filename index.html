@@ -3,7 +3,7 @@
 <head>
 	<title>Thorana</title>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 	<meta name="description" content="ඉංජිනේරු පීඨ බෞද්ධ සහෝදර සංගමය මගින් ඉදිරිපත්  කරන DGITAL වෙසක් තොරණ ">
 	<meta property="og:title" content="රේවථී ප්‍රේතවස්තුව">
@@ -24,7 +24,15 @@
 	<div class="container">		
 		
 		<div class="media">
-		  <img src="images/Untitled-2.png" class="mr-3" alt="..." style="width: 30%">
+		  <img src="images/a1.png" class="mr-3" alt="" style="width: 30%;display: none" id="Image1">
+		  <img src="images/a2.png" class="mr-3" alt="" style="width: 30%;display: none" id="Image2" >
+		  <img src="images/a3.png" class="mr-3" alt="" style="width: 30%;display: none" id="Image3">
+		  <img src="images/a4.png" class="mr-3" alt="" style="width: 30%;display: none" id="Image4">
+		  <img src="images/a5.png" class="mr-3" alt="" style="width: 30%;display: none" id="Image5">
+		  <img src="images/a6.png" class="mr-3" alt="" style="width: 30%;display: none" id="Image6">
+		  <img src="images/a7.png" class="mr-3" alt="" style="width: 30%;display: none" id="Image7">
+		  <img src="images/a8.png" class="mr-3" alt="" style="width: 30%;display: none" id="Image8">
+
 		  <div class="media-body">
 		  	<h5>තොරණ විස්තරය ශ්‍රවණය කරන්න</h5><audio autoplay="true" id="theAudio" src="images/Torana_full_Mixdown_2.mp3" controls></audio>
 
@@ -217,6 +225,15 @@
 		var description7 = document.getElementById('description7');
 		var description8 = document.getElementById('description8');
 
+		var image1 = document.getElementById('Image1');
+		var image2 = document.getElementById('Image2');
+		var image3 = document.getElementById('Image3');
+		var image4 = document.getElementById('Image4');
+		var image5 = document.getElementById('Image5');
+		var image6 = document.getElementById('Image6');
+		var image7 = document.getElementById('Image7');
+		var image8 = document.getElementById('Image8');
+
 		var audioElement = document.getElementById("theAudio");
 		var currentTime;//audioElement.currentTime;
 		
@@ -225,8 +242,8 @@
 			// alert("playing");
 		}
 		
-		var times = [0,5,87,124,170,213,243,330,423,438];
-		
+		var times = [0,5,87,124,170,213,243,330,423,438]; // for descriptions
+		var timesImages = [0,124,170,225,236,331,372,418]; // for images
 		audioElement.ontimeupdate = function(){
 			currentTime = audioElement.currentTime;
 			// console.log(currentTime);
@@ -691,7 +708,6 @@
 			var image1 = new Image();
 			image1.src = "images/a1.png";
 			image1.addEventListener('load',function(){
-				// console.log(image.src);
 				context.drawImage(image1,(cx[8] - r*fractionOfDispSmall),(cy[8] - r*fractionOfDispSmall),fractionOfDispSmall*2*r,fractionOfDispSmall*2*r);
 				
 			});
@@ -699,49 +715,42 @@
 			var image2 = new Image();
 			image2.src = "images/a2.png";
 			image2.addEventListener('load',function(){
-				// console.log(image.src);
 				context.drawImage(image2,(cx[7] - r*fractionOfDispSmall),(cy[7] - r*fractionOfDispSmall),fractionOfDispSmall*2*r,fractionOfDispSmall*2*r);
 			});
 
 			var image3 = new Image();
 			image3.src = "images/a3.png";
 			image3.addEventListener('load',function(){
-				// console.log(image.src);
 				context.drawImage(image3,(cx[6] - r*fractionOfDispSmall),(cy[6] - r*fractionOfDispSmall),fractionOfDispSmall*2*r,fractionOfDispSmall*2*r);	
 			});
 
 			var image4 = new Image();
 			image4.src = "images/a4.png";
 			image4.addEventListener('load',function(){
-				// console.log(image.src);
 				context.drawImage(image4,(cx[5] - r*fractionOfDispSmall),(cy[5] - r*fractionOfDispSmall),fractionOfDispSmall*2*r,fractionOfDispSmall*2*r);
 			});
 
 			var image5 = new Image();
 			image5.src = "images/a5.png";
 			image5.addEventListener('load',function(){
-				// console.log(image.src);
 				context.drawImage(image5,(cx[4] - r*fractionOfDispSmall),(cy[4] - r*fractionOfDispSmall),fractionOfDispSmall*2*r,fractionOfDispSmall*2*r);
 			});
 
 			var image6 = new Image();
 			image6.src = "images/a6.png";
 			image6.addEventListener('load',function(){
-				// console.log(image.src);
 				context.drawImage(image6,(cx[3] - r*fractionOfDispSmall),(cy[3] - r*fractionOfDispSmall),fractionOfDispSmall*2*r,fractionOfDispSmall*2*r);
 			});
 
 			var image7 = new Image();
 			image7.src = "images/a7.png";
 			image7.addEventListener('load',function(){
-				// console.log(image.src);
 				context.drawImage(image7,(cx[2] - r*fractionOfDispSmall),(cy[2] - r*fractionOfDispSmall),fractionOfDispSmall*2*r,fractionOfDispSmall*2*r);
 			});
 
 			var image8 = new Image();
 			image8.src = "images/a8.png";
 			image8.addEventListener('load',function(){
-				// console.log(image.src);
 				context.drawImage(image8,(cx[1] - r*fractionOfDispSmall),(cy[1] - r*fractionOfDispSmall),fractionOfDispSmall*2*r,fractionOfDispSmall*2*r);
 			});
 

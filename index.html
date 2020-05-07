@@ -3,6 +3,8 @@
 <head>
 	<title>Thorana</title>
 	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 	<meta name="description" content="ඉංජිනේරු පීඨ බෞද්ධ සහෝදර සංගමය මගින් ඉදිරිපත්  කරන DGITAL වෙසක් තොරණ ">
 	<meta property="og:title" content="රේවථී ප්‍රේතවස්තුව">
 	<meta property="og:url" content="http://gotozero.000webhostapp.com/apptest/html-canves-thorana/">
@@ -168,8 +170,10 @@
 								newComm = document.createElement('h6');
 								newComDate = document.createElement('h6');
 
+								
+
 								newCommHolder.setAttribute('class','media-body');
-								// newCommHolder.setAttribute('style','border: 1px solid');
+								newCommHolder.setAttribute('style','border-left: 2px solid #F9B500;padding-left: 10px');
 								newCommUser.setAttribute('class','mt-0');
 								// newComm.setAttribute('class','');
 								// newCommDate.setAttribute('class','');
@@ -684,13 +688,63 @@
 			}
 			// filTriangle();
 
-			var image = new Image();
-			image.src = "images/Untitled-2.png";
-			image.addEventListener('load',function(){
-				for(var i = 1; i < cx.length ; i++){
-					context.drawImage(image,(cx[i] - r*fractionOfDispSmall),(cy[i] - r*fractionOfDispSmall),fractionOfDispSmall*2*r,fractionOfDispSmall*2*r);
-				}
+			var image1 = new Image();
+			image1.src = "images/a1.png";
+			image1.addEventListener('load',function(){
+				// console.log(image.src);
+				context.drawImage(image1,(cx[8] - r*fractionOfDispSmall),(cy[8] - r*fractionOfDispSmall),fractionOfDispSmall*2*r,fractionOfDispSmall*2*r);
+				
 			});
+			
+			var image2 = new Image();
+			image2.src = "images/a2.png";
+			image2.addEventListener('load',function(){
+				// console.log(image.src);
+				context.drawImage(image2,(cx[7] - r*fractionOfDispSmall),(cy[7] - r*fractionOfDispSmall),fractionOfDispSmall*2*r,fractionOfDispSmall*2*r);
+			});
+
+			var image3 = new Image();
+			image3.src = "images/a3.png";
+			image3.addEventListener('load',function(){
+				// console.log(image.src);
+				context.drawImage(image3,(cx[6] - r*fractionOfDispSmall),(cy[6] - r*fractionOfDispSmall),fractionOfDispSmall*2*r,fractionOfDispSmall*2*r);	
+			});
+
+			var image4 = new Image();
+			image4.src = "images/a4.png";
+			image4.addEventListener('load',function(){
+				// console.log(image.src);
+				context.drawImage(image4,(cx[5] - r*fractionOfDispSmall),(cy[5] - r*fractionOfDispSmall),fractionOfDispSmall*2*r,fractionOfDispSmall*2*r);
+			});
+
+			var image5 = new Image();
+			image5.src = "images/a5.png";
+			image5.addEventListener('load',function(){
+				// console.log(image.src);
+				context.drawImage(image5,(cx[4] - r*fractionOfDispSmall),(cy[4] - r*fractionOfDispSmall),fractionOfDispSmall*2*r,fractionOfDispSmall*2*r);
+			});
+
+			var image6 = new Image();
+			image6.src = "images/a6.png";
+			image6.addEventListener('load',function(){
+				// console.log(image.src);
+				context.drawImage(image6,(cx[3] - r*fractionOfDispSmall),(cy[3] - r*fractionOfDispSmall),fractionOfDispSmall*2*r,fractionOfDispSmall*2*r);
+			});
+
+			var image7 = new Image();
+			image7.src = "images/a7.png";
+			image7.addEventListener('load',function(){
+				// console.log(image.src);
+				context.drawImage(image7,(cx[2] - r*fractionOfDispSmall),(cy[2] - r*fractionOfDispSmall),fractionOfDispSmall*2*r,fractionOfDispSmall*2*r);
+			});
+
+			var image8 = new Image();
+			image8.src = "images/a8.png";
+			image8.addEventListener('load',function(){
+				// console.log(image.src);
+				context.drawImage(image8,(cx[1] - r*fractionOfDispSmall),(cy[1] - r*fractionOfDispSmall),fractionOfDispSmall*2*r,fractionOfDispSmall*2*r);
+			});
+
 
 			var imageCenter = new Image();
 			var dim = 2*R*Math.sin(Math.atan(0.5));
@@ -709,13 +763,13 @@
 			var makara_width = makara_height*2;
 
 			var imageMakaraleft = new Image();
-			imageMakaraleft.src = 'images/MAKARA_left.png';
+			imageMakaraleft.src = 'images/MAKARA_right.png';
 			imageMakaraleft.addEventListener('load',function(){
 				context.drawImage(imageMakaraleft,pointSqx - makara_width,pointSqy,makara_width,makara_height);
 			});
 
 			var imageMakaraRight = new Image();
-			imageMakaraRight.src = 'images/MAKARA_right.png';
+			imageMakaraRight.src = 'images/MAKARA_left.png';
 			imageMakaraRight.addEventListener('load',function(){
 				context.drawImage(imageMakaraRight,pointSqx + dimPointSqx,pointSqy,makara_width,makara_height);
 			});

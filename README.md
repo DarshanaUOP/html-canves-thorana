@@ -8,4 +8,4 @@
 <br>
 
 ### DESIGN
-This design is based on Sri Lankan pandol designs for vesak season. it is loads a HTML page which is contains a HTML Canvas element, a description area and a comment section into users browser and then a javascript which is running on usser's web browser is animaitng the Pandol. First, it measures the dimensions of the user's device, the height and width are the basic measurement it reads from the device. Width of the device is taken to calculate all the points, shapes, and positions on the HTML Canvas.
+This design is based on Sri Lankan pandol designs for vesak season. it is loads a HTML page which is contains a HTML Canvas element, a description area and a comment section into users browser and then a javascript which is running on usser's web browser is animaitng the Pandol. First, it measures the dimensions of the user's device, the height and width are the basic measurement it reads from the device. Width of the device is taken to calculate all the points, shapes, and positions on the HTML Canvas. All the shapes are calculated according to the width of device and all are calculated through a mathematical geometrical moodel.
